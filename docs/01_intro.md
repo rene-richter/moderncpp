@@ -75,10 +75,8 @@ try it on https://wandbox.org online compiler: edit/compile/run cycle
 * https://en.cppreference.com
 * https://isocpp.org
 
-TODO: this course on Github?
-
 # Disclaimer
-* content will be heavily subjective, incomplet++ ++, and incorre~~k~~t
+* content will be heavily subjective, incomplet_, and incorre~~k~~t
 * no guaranteed date of completion
 
 Nevertheless, suggestions and issues are welcome.

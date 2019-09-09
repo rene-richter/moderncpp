@@ -55,7 +55,7 @@ Literal values and temporary objects like return values do not need a name:
 
 ```cpp
 int main() { return 6*7; }
-// I have no idea, how your operating system will react that error code...
+// I have no idea, how your operating system will react to that error code...
 ```
 
 ## Name
@@ -94,20 +94,20 @@ C++ is a strongly typed language. The type of a variable is known at compile tim
 (Local) variables of fundamental types should be initialized, i.e. assigned a value at definition.
 
 ```cpp
-bool   b = true || false; // but not both at the same time
-int    i = 0b00101010;    // binary 0b0010'1010 == decimal 42
-double d = 2.99792458e8;  // speed of light in meters per second
-                          // __e8 == __ multiplied by 100'000'000
-                          // ' can be used as digit separator (since C++14)
-char   c = '*';           // character must be surrounded by '
+bool   b { true || false }; // but not both at the same time
+int    i { 0b00101010 };    // binary 0b0010'1010 == decimal 42
+double d { 2.99792458e8 };  // speed of light in meters per second
+                            // __e8 == __ multiplied by 100'000'000
+                            // ' can be used as digit separator (since C++14)
+char   c { '*' };           // character must be surrounded by '
 ```
 
 Otherwise they contain unknown garbage values.
 Modern C++ compilers are able to detect the type of variables automatically from the assigned value:
 ```cpp
-auto x = 42;      // int
-auto r = "Hello"; // refers to an array of 6 char constants,
-                  // is not a std::string!
+auto x { 42 };      // int
+auto r { "Hello" }; // refers to an array of 6 char constants,
+                    // is not a std::string!
 ```
 Other types are defined in namespace `std` of the C++ standard library :
 ```cpp
@@ -115,22 +115,21 @@ Other types are defined in namespace `std` of the C++ standard library :
 #include <string>
 std::map<std::string,int> table; // empty table of string-integer pairs
 std::string s1;                  // empty string of characters
-std::string s2 = "Hello";        // string of 5 characters
+std::string s2 { "Hello" };      // string of 5 characters
 ```
 A suffix to a constant literal can hint to some type:
 ```cpp
 using std::literals;
-auto s3 = "Hello"s;   // std::string
-auto t1 = 10s;        // 10 seconds
-auto t2 = 1min + 28s + 73ms; // std::chrono::duration
-auto s4 = "Hello"sv;  // std::string_view
-auto z = 3.0 + 2.0i;  // std::complex number
+auto s3 { "Hello"s };          // std::string
+auto t1 { 10s };               // 10 seconds
+auto t2 { 1min + 28s + 73ms }; // std::chrono::duration
+auto z  { 3.0 + 2.0i };        // std::complex number
 ```
 ## Operator
 * known from math: assign a value with `x=2`, add two values `1+2`,
 * familiar from C-like languages like `i*=3` (multiply i by 3 and store the result in `i`), corresponding to assembler instructions like `MUL AX,3`
 * reused in C++ with different meaning: get/send data from/to console with `>>` and `<<` shifting operators
-* sometgimes impossible to grasp for beginners
+* sometimes impossible to grasp for beginners
 
 See statement `table[word]++` in Example 2:
   * `table[word]` looks for the word in the (ASCIIbetically sorted) key column of the table and
