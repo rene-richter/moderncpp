@@ -96,7 +96,7 @@ cmake -G "MinGW Makefiles" ..
 cmake -G "MinGW Makefiles" ..
 ```
 will obviously fail: gregorian.cpp does not exist.
-Take an engineer's approach to programming: Start debugging an empty file.
+Take an engineer's approach to programming -- start debugging an empty file!
 
 Create an empty file gregorian.cpp. Redo the CMake command. It succeeds. 
 Building executables with
@@ -106,7 +106,7 @@ cmake --build .
 fails with a linker error: function isLeapYear() does not exist yet.
 
 ## A stub implementation
-A minimal version of gregorian.cpp, which is correct for about 75% of all years:
+A minimal version of gregorian.cpp, which is correct for about 75% of all years
 ```cpp
 bool isLeapYear(int year)
 {
