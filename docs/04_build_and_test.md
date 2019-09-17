@@ -4,7 +4,7 @@ A function declared as
 ```cpp
 bool isLeapYear(int year);
 ```
-in header `gregorian.h` is needed for this program leapyear.cpp:
+in header `gregorian.h` is needed for this program `leapyear.cpp`:
 ```cpp
 #include <iostream>
 #include "gregorian.h"
@@ -20,7 +20,7 @@ int main()
 
 ## Code requirements in automated tests first
 Download the latest `doctest.h` from https://github.com/onqtam/doctest .
-Describe requirements for Gregorian calendar in leapyeartests.cpp:
+Describe requirements for Gregorian calendar in `leapyeartests.cpp`:
 ```cpp
 #include "doctest.h"
 #include "gregorian.h"
@@ -67,7 +67,7 @@ Add a testmain.cpp:
 ```
 
 ## CMake build script
-Write a CMake project description into CMakeLists.txt:
+Write a CMake project description into `CMakeLists.txt`:
 ```txt
 
 cmake_minimum_required (VERSION 3.14)
@@ -95,10 +95,10 @@ cmake -G "MinGW Makefiles" ..
 ```
 cmake -G "MinGW Makefiles" ..
 ```
-will obviously fail: gregorian.cpp does not exist.
+will obviously fail: `gregorian.cpp` does not exist.
 Take an engineer's approach to programming -- start debugging an empty file!
 
-Create an empty file gregorian.cpp. Redo the CMake command. It succeeds. 
+Create an empty file `gregorian.cpp`. Redo the CMake command. It succeeds. 
 Building executables with
 ```
 cmake --build .
@@ -106,7 +106,7 @@ cmake --build .
 fails with a linker error: function isLeapYear() does not exist yet.
 
 ## A stub implementation
-A minimal version of gregorian.cpp, which is correct for about 75% of all years
+A minimal version of `gregorian.cpp`, which is correct for about 75% of all years
 ```cpp
 bool isLeapYear(int year)
 {
