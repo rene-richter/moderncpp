@@ -60,7 +60,7 @@ TEST_CASE("years divisible by 400 are leap years")
 	CHECK(isLeapYear(2400) == true);
 }
 ```
-Add a testmain.cpp:
+Add a `testmain.cpp`:
 ```cpp
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
