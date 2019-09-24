@@ -78,8 +78,8 @@ for (auto [lastname, year_of_birth, year_of_death_not_used] : persons)
 }
 ```
 
-## Algorithms
-work on a range of data
+## Generic algorithms
+work on a range of data of some type `T`
 ```cpp
 #include <algorithm>
 
@@ -94,12 +94,12 @@ auto by_name = [](Person x, Person y) { return x.name < y.name; };
 auto by_year_of_birth = [](Person x, Person y) { return x.born < y.born; };
 ```
 
-## Memory management
+## Automated memory management
 
-`vector<T> v` is similar to `std::string s`
-* memory is (re)allocated, when needed
-* released, when variables `s` and `v` end their life
-* resource management is deterministic, no garbage collection needed
+`vector<T> v` is similar to `std::string s`, users don't have to deal with raw pointers to memory:
+* memory is (re)allocated, when needed,
+* released, when variables `s` and `v` end their life.
+* resource management is deterministic, no garbage collection needed.
 * RAII principle ("*r*essource *a*cquisition *i*s *i*nitialization"), should be named AC/DC ("*a*cquire in *c*onstructor / *d*estructor *c*leans up")
 
 ```
