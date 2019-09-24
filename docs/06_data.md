@@ -211,3 +211,7 @@ in the same codebase which would be harder to maintain.
 * What about `const&` ?
 * How to measure the costs of memory allocation/release, copy/move operations?
 * What is *small string optimization*? When does it apply?
+* Compare C++ to other languages: 
+	* Do they take function parameters by value or by reference? 
+	* Do they have value semantics or reference semantics? 
+	* Can the programmer change the default behaviour?
