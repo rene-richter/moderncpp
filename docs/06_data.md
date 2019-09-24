@@ -183,19 +183,19 @@ Person p2{"Newton" , 1642, 1726};
 print(p2); // copy
 ```
 
-*Output parameters*
+*Reference parameters*
 ```cpp
 void print(Person& p);
 ```
-take a reference to *lvalue* (object that can appear on the left side of an assignment operation)
+take an alias to an *lvalue* (object that can appear on the left side of an assignment operation)
 * are allowed to change the data of the referred object,
-* are another way to transport information from inside the function out,
+* can also transport information from inside the function out,
 * require a copy for temporary *rvalues*. The compiler may warn about that copy.
 
 ```cpp
 void print(Person const& p);
 ```
-takes a constant reference to an lvalue. For temporary rvalues the lifetime is extended until the *end of statement*.
+takes a constant reference to an lvalue. Changing it's value is not allowed. For temporary rvalues the lifetime is extended until the *end of statement*.
 
 
 We could have two versions for optimal performance
