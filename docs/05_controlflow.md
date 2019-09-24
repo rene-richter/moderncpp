@@ -36,7 +36,7 @@ When the condition fails, program execution continues after the end of the itera
 ```
 A `do { ... } while (condition);` decides after executing the loop body whether to repeat the loop body again.
 
-Loop-*init*, loop-*condition*, and *increment* can be bundled like this:
+Loop-*init* statement, loop-*condition*, and loop-*increment* can be bundled like this:
 ```cpp
 	for (auto year = 2017; year < 2030; ++year)
 	{
@@ -46,7 +46,7 @@ Loop-*init*, loop-*condition*, and *increment* can be bundled like this:
 but variables defined inside the for-init statement  like `year` are gone after leaving the loop.
 `for(;;) ...` means `while(true) ...`, i.e. *forever*.
 
-for each value in a sequence or *range* (called *range-for loop*):
+Iterate for each value in a sequence or *range* (called *range-for loop*):
 ```cpp
 	for (auto year : {2017, 2018, 2019, 2020, 2100})
 	{
