@@ -100,7 +100,7 @@ auto by_year_of_birth = [](Person x, Person y) { return x.born < y.born; };
 * memory is (re)allocated, when needed
 * released, when variables `s` and `v` end their life
 * resource management is deterministic, no garbage collection needed
-* RAII ("++r++essource ++a++cquisition ++i++s ++i++nitialization") or AC/DC principle ("++a++cquire in ++c++onstructor / ++d++estructor ++c++leans up")
+* RAII principle ("*r*essource *a*cquisition *i*s *i*nitialization"), should be named AC/DC ("*a*cquire in *c*onstructor / *d*estructor *c*leans up")
 
 ```
 s ----> [sequence of chars in chunk of dynamic memory...]
