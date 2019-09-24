@@ -163,8 +163,8 @@ Person p1 = read_data_for_person(); // possible copy elision
 After moving its data the *moved-from* object is "in a valid but empty state". It can be destroyed safely.
 ```
 temp -> X    --> [data...]
-           /
-          /
+ |         /
+ v        /
 p1  -----
 ```
 ### Variations on function parameters
