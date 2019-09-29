@@ -42,7 +42,7 @@ assert(gcd(28,0) == 28);
 assert(gcd( 0,7) == 7);
 assert(gcd( 4,9) == 1);
 ```
-1. Find all Pythagorean triples 
+4. Find all Pythagorean triples
    (positive integers a,b,c where`a*a + b*b` equals `c*c`)
    within range `0 < a,b,c < 500`.
    Print them in ascending order, no duplicates!
