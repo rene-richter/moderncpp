@@ -28,7 +28,7 @@ int main()
   {
     table[word]++;
   }
-  for (const auto [word, count] : table)
+  for (auto const [word, count] : table)
   {
     std::cout << word << '\t' << count << '\n';
   }

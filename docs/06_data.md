@@ -35,6 +35,8 @@ Person read_data_for_person()
 * containers are generic: `vector<T>` where `T` can be any (copyable, default-constructible, ...) type
 
 ```cpp
+#include <vector>
+
 std::vector<Person> persons;
 ```
 Empty containers
