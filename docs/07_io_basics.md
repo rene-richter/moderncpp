@@ -59,12 +59,12 @@ while (std::getline(std::cin, s)) ...
 Text strings can be used as input stream
 ```cpp
 std::string s = "1213 45";
-std::istringstream is(s);
+auto is = std::istringstream{s};
 is >> x >> y;
 ```
 and written to an output string stream
 ```cpp
-std::ostringstream os;
+auto os = std::ostringstream{};
 os << x << ' ' << y;
 auto s2 = os.str(); // return output as string
 ```
@@ -74,10 +74,10 @@ auto s2 = os.str(); // return output as string
 ```
 ```cpp
 {
-	std::ifstream in("inputfilename.txt");
+	auto in = std::ifstream{"inputfilename.txt"};
 	if (in) in >> x >> y;
 
-	std::ofstream out("outputfilename.txt");
+	auto out = std::ofstream{"outputfilename.txt"};
 	if (out) out << x << ' ' << y;
 	// in.close();  // done automatically
 	// out.close();
