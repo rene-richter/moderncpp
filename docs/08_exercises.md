@@ -37,7 +37,7 @@ gcd(a,b):
    Write a test driver using `doctest.h` or
 ```cpp
 #include <cassert>
-assert(gcd(28,7) == 4);
+assert(gcd(28,36) == 4);
 assert(gcd(28,0) == 28);
 assert(gcd( 0,7) == 7);
 assert(gcd( 4,9) == 1);
