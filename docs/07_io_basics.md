@@ -94,7 +94,7 @@ Some possible reasons:
 
 ## I/O stream operators `<<` and `>>` for user defined data structures
 
-to use
+To use
 ```cpp 
 Person p;
 std::cin >> p;
@@ -121,14 +121,14 @@ struct Person
 		char dummy;
 		if (is >> tmp.name >> tmp.born >> dummy >> tmp.died)
 		{
-			p = tmp;
+			p = tmp; // change only when all data read succesfully
 		}	
 		return is;
 	}
 };
 ```
 Recommended style (
-https://www.youtube.com/watch?v=WRQ1xqYBKgc&t=270s Nicolai Josuttis: When C++ style guide contradict. CPPCon 2019):
+https://www.youtube.com/watch?v=WRQ1xqYBKgc&t=270s Nicolai Josuttis: When C++ Style Guide Contradict. CPPCon 2019. Video at 18-20 min):
 
 Place them as "hidden friends" inside the data structure.
 So the compiler looks for these only when this structure is involved, 
