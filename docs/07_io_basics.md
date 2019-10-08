@@ -91,3 +91,49 @@ Some possible reasons:
 * file path not correct (relative to active directory)
 * no filesystem access rights to read, create, or write file
 * file already opened/locked by (another) process
+
+## I/O stream operators `<<` and `>>` for user defined data structures
+
+to use
+```cpp 
+Person p;
+std::cin >> p;
+std::cout << p << '\n';
+```
+replace `print()` and `read()` functions: 
+```cpp
+struct Person
+{
+	std::string name;
+	int born;
+	int died;
+
+	friend
+	auto& operator<<(std::ostream& os, const Person& p)
+	{
+		return os << p.name << '\t' << p.born << '-' << p.died; 
+	}
+
+	friend
+	auto& operator>>(std::istream& is, Person& p)
+	{
+		Person tmp;
+		char dummy;
+		if (is >> tmp.name >> tmp.born >> dummy >> tmp.died)
+		{
+			p = tmp;
+		}	
+		return is;
+	}
+};
+```
+Recommended style (
+https://www.youtube.com/watch?v=WRQ1xqYBKgc&t=270s Nicolai Josuttis: When C++ style guide contradict. CPPCon 2019):
+
+Place them as "hidden friends" inside the data structure.
+So the compiler looks for these only when this structure is involved, 
+reduces the already long list of error messages, when no `operator>>` or `operator<<` exists for other types.
+(That was not done in the C++ Standard Library. That's why there is such a long list, which is bad :-( )
+
+
+
