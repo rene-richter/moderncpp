@@ -10,7 +10,7 @@ char min(char a, char b);
 Follow the DRY principle: Don't repeat yourself.
 
 A:
-Write a generalized function, a template for a generic function
+Write a generalized function, a _template_ for a generic function
 
 ```cpp
 template <typename T>
@@ -106,7 +106,7 @@ auto m4 = min(r1, r2, std::less<>{}, [](auto r) { return r.x; });
 ```
 Hints:
 * `std::less<>{}` creates an `<utility>` object comparing two thingys by `operator<(a,b)`.
-* In databases, considering columns of a table is called a projection.
+* In databases, considering (some) columns of a table is called a projection.
 
 A:
 ...
@@ -130,5 +130,5 @@ T min(T a, T b, BinaryPred compare)
 A:
 ...
 
-Hint: This could be resolved by C++20 template constraints (concepts).
+Note: This could be resolved by C++20 template constraints (concepts).
 
