@@ -13,5 +13,11 @@ Notes on Modern C++(17) --- A course for beginners
 	* [Exercises](docs/08_exercises.md)
 * [Functions](docs/11_functions.md)
 	* [Function templates](docs/12_function_templates.md)
-
+	* [Function template exercises](docs/13_function_template_exercises.md)
+	* TODO: Lambda expressions
+* Types
+	* TODO: Fundamental types and user-defined types
+	* TODO: Structures and classes
+	* [Class templates](docs/23_class_templates.md)
+	
 To be continued...
