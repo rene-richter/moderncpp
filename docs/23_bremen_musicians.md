@@ -64,16 +64,15 @@ void demo1()
 Here is a (incomplete) list of issues:
 * `pop(s)` resets a place on storage to 0. Why? Suppose 0 stands for an empty place
 (would not be necessary, but simplifies debugging ...)
-* Never forget to call `create(s)`: otherwise count is not initialized => garbage.
-Next cat would be pushed to somewhere in space, i.e memory,
+* Never forget to call `create(s)`: otherwise `count` is not initialized; it contains some garbage value.
+The next cat would be pushed to somewhere in "space", i.e. memory,
 causing undefined behaviour like killing your cat, killing your program or
 making your cat pregnant even if you don't have any cats anymore!
 * Pop all cats from the stack before removing it: otherwise these cats will become angry. So never forget to call `destroy(s)`. If you don't pop off all cats, their lifetime ends, when the storage is destroyed at the end of the stack lifetime.
-(For int values nothing bad happens here.)
-* The implementation of `destroy(s)` only illustrates that the programmer is responsible for cleaning up all ressources he allocates -- there is no garbage collector at all (or seen the other way around, the best of all garbage collectors:
-Don't produce any garbage in the first place).
-* Setting `s.count = 0` in `demo1()` directly would have the same effect for the moment, but what if the implementation of stack changes?
-* Assigning `s.count` a wrong value at any moment can result in horrible effects.
+(For `int` values nothing bad happens here.)
+* The implementation of `destroy(s)` only illustrates that the programmer is responsible for cleaning up all ressources he allocates -- there is no garbage collector at all (or seen the other way around, the best of all garbage collectors: Don't produce any garbage in the first place).
+* Setting `s.count = 0` in `demo1()` directly would have the same effect for the moment, but what if the implementation of `Stack` changes?
+* Assigning a wrong value to `s.count` at any moment can result in horrible effects.
 It's impossible to reason about the correctness of stack without knowing the whole program.
 
 ## Stage 2: Restricting access to friends
@@ -188,7 +187,7 @@ void demo4()
 ```
 
 * Stack behaviour is now controlled by its methods.
-* A responsible programmer would make sure the stack is
+* A responsible programmer would also make sure the stack is
   * not full when pushing, and
   * not empty when popping.
 
@@ -196,7 +195,7 @@ void demo4()
 
 Make class `Stack` a template.
 Each concrete stack can store a predefined number of objects of some type.
-The size parameter is optional.
+The size parameter is optional when defining a stack object.
 
 ```cpp
 template <typename T, int MAXSTACKSIZE = 10>
