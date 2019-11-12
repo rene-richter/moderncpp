@@ -12,21 +12,21 @@ using Animal = std::variant<Donkey, Dog, Cat, Rooster>;
 
 struct FriendlyVisitor
 {
-	void operator()(Cat x) { std::cout << "mew ";  }
-	void operator()(Dog x) { std::cout << "woof ";  }
-	void operator()(Donkey x) { std::cout << "hee-haw ";  }
-	void operator()(Rooster x) { std::cout << "cock-a-doodle-doo ";  }
+	auto operator()(Cat x) { return "mew ";  }
+	auto operator()(Dog x) { return "woof ";  }
+	auto operator()(Donkey x) { return "hee-haw ";  }
+	auto operator()(Rooster x) { return "cock-a-doodle-doo ";  }
 };
 
 struct EvilVisitor
 {
-	void operator()(Cat x) { std::cout << "scratch!\n";  }
-	void operator()(Dog x) { std::cout << "bite!\n";  }
-	void operator()(Donkey x) { std::cout << "bash!\n";  }
-	void operator()(Rooster x) { std::cout << "hack!\n";  }
+	auto operator()(Cat x) { return "scratch!\n";  }
+	auto operator()(Dog x) { return "bite!\n";  }
+	auto operator()(Donkey x) { return "bash!\n";  }
+	auto operator()(Rooster x) { return "hack!\n";  }
 };
 
-void demo7() 
+auto demo7() 
 {
 	std::stack<Animal> s;
 	
@@ -39,8 +39,8 @@ void demo7()
 	{
 		Animal animal = s.top();
 		s.pop();
-		std::visit(FriendlyVisitor{}, animal);
-		std::visit(EvilVisitor{}, animal);
+		std::cout << std::visit(FriendlyVisitor{}, animal);
+		std::cout << std::visit(EvilVisitor{}, animal);
 	}
 }
 
