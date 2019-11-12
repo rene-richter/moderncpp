@@ -17,7 +17,7 @@ Notes on Modern C++(17) --- A course for beginners
 	* TODO: Lambda expressions
 * Types
 	* TODO: Fundamental types
-	* [User-defined types](docs/22_user_defined_types.md)
+	* [User-defined types](docs/22_userdefined_types.md)
 	* [Stacking animals](docs/23_bremen_musicians.md)
 	
 To be continued...
