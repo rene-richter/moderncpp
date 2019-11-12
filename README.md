@@ -16,8 +16,8 @@ Notes on Modern C++(17) --- A course for beginners
 	* [Function template exercises](docs/13_function_template_exercises.md)
 	* TODO: Lambda expressions
 * Types
-	* TODO: Fundamental types and user-defined types
-	* TODO: Structures and classes
-	* [Class templates](docs/23_class_templates.md)
+	* TODO: Fundamental types
+	* [User-defined types](docs/22_user_defined_types.md)
+	* [Stacking animals](docs/23_bremen_musicians.md)
 	
 To be continued...

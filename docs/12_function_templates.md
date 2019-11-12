@@ -26,3 +26,4 @@ Exercise:
 * Find situations when the compiler can't find a type match.
 * Experiment with a function `min(a,b)` returning the minimum of two given values.
   What if `a` and `b` have different types?
+* Define a template function swap(x,y) which exchanges the values of x and y.
