@@ -1,13 +1,14 @@
 # Stacking cats and other animals
 
+This is a transformation from procedural programming style to object-based and generic programming style,
 inspired by Bjarne Stroustrup's [Sixteen ways to stack a cat](http://www.stroustrup.com/stack_cat.pdf ) (1990),
-leading to a Brothers Grimm's tale, made in Modern C++.
+leading to Brothers Grimm's tale characters, coded in Modern C++.
 
 ## Stack
 
 A stack is a device to store multiple things on top of each other,
 like a stack of books, a stack of kitchen plates, a stack of shipping containers, ...
-You can 
+You can
 * push something on the stack,
 * pop something from it,
 * and have access to the top thing on the stack.
@@ -42,41 +43,44 @@ Cat& top (Stack& s) { return s.storage[s.count-1]; }
 void create (Stack& s) { s.count = 0; }
 void destroy(Stack& s) { while (not is_empty(s)) pop(s); }
 
-// 
+//
 
 void demo1()
 {
 	Stack s;
 	create(s);
-	
+
 	push(s, 1);
 	push(s, 2);
 	push(s, 3);
 	assert(top(s) == 3);
 	pop(s);
 	assert(top(s) == 2);
-	
+
 	destroy(s);
 }
 ```
 
 Here is a (incomplete) list of issues:
-* pop(s) resets a place on storage to 0. Why? Suppose 0 stands for an empty place
+* `pop(s)` resets a place on storage to 0. Why? Suppose 0 stands for an empty place
 (would not be necessary, but simplifies debugging ...)
-* Never forget to call create(s): otherwise count is not initialized => garbage.
+* Never forget to call `create(s)`: otherwise count is not initialized => garbage.
 Next cat would be pushed to somewhere in space, i.e memory,
 causing undefined behaviour like killing your cat, killing your program or
 making your cat pregnant even if you don't have any cats anymore!
-* Pop all cats from the stack before removing it: otherwise these cats will become angry. So never forget to call destroy(s). If you don't pop off all cats, their lifetime ends, when the storage is destroyed at the end of the stack lifetime.
+* Pop all cats from the stack before removing it: otherwise these cats will become angry. So never forget to call `destroy(s)`. If you don't pop off all cats, their lifetime ends, when the storage is destroyed at the end of the stack lifetime.
 (For int values nothing bad happens here.)
-* The implementation of destroy(s) only illustrates that the programmer is responsible for cleaning up all ressources he allocates -- there is no garbage collector at all (or seen the other way around, the best of all garbage collectors:
+* The implementation of `destroy(s)` only illustrates that the programmer is responsible for cleaning up all ressources he allocates -- there is no garbage collector at all (or seen the other way around, the best of all garbage collectors:
 Don't produce any garbage in the first place).
-* Setting s.count = 0 in demo() directly would have the same effect for the moment,
-but what if the implementation of stack changes?
-* Assigning s.count a wrong value at any moment can result in horrible effects.
+* Setting `s.count = 0` in `demo1()` directly would have the same effect for the moment, but what if the implementation of stack changes?
+* Assigning `s.count` a wrong value at any moment can result in horrible effects.
 It's impossible to reason about the correctness of stack without knowing the whole program.
 
 ## Stage 2: Restricting access to friends
+
+A class is a struct, where member access is private by default.
+In C++ only friends can handle your private parts.
+It's up to the class definition, whom to declare as friend.
 
 ```cpp
 class Stack
@@ -85,7 +89,7 @@ class Stack
 
 	int count;
 	std::array<Cat, MAXSTACKSIZE> storage;
-public:
+
 	friend void create (Stack& s) { s.count = 0; }
 	friend void destroy(Stack& s) { while (not is_empty(s)) pop(s); }
 
@@ -103,7 +107,7 @@ void demo2()
 }
 ```
 * One issue solved: no access to data members from outside (except friends).
-* Classwide constant MAXSTACKSIZE is now an implementation detail.
+* Classwide constant `MAXSTACKSIZE` is now an implementation detail.
 
 ## Stage 3: Member functions
 
@@ -126,30 +130,31 @@ public:
 	Cat& top () { return storage[count-1]; }
 };
 
-void demo3() 
+void demo3()
 {
 	Stack s;
 	s.create();
-	
+
 	s.push(1);
 	s.push(2);
 	s.push(3);
 	assert(s.top() == 3);
 	s.pop();
 	assert(s.top() == 2);
-	
+
 	s.destroy();
 }
 ```
 Note:
-* member functions (_methods_) have access to member data.
-* const methods do not change any member data.
+* Member functions (called _methods_ in object-oriented programming) have access to members without naming `this` object: `count` means `this->count`.
+* Methods marked as `const` will never change any member data.
+* Methods have to be public to be called from outside the class.
 
-## Stage 4: Automating construction and destruction 
+## Stage 4: Automating construction and destruction
 
-special functions:
-* constructor Stack()
-* destructor ~Stack() 
+Every class has some _special functions_:
+* Constructor `Stack()` creating objects of type `Stack`,
+* Destructor `~Stack()` doing the cleanup, if necessary. It is called automatically, when the lifetime of the object ends.
 
 ```cpp
 class Stack
@@ -170,7 +175,7 @@ public:
 	Cat& top () { return storage[count-1]; }
 };
 
-void demo4() 
+void demo4()
 {
 	Stack s;
 	s.push(1);
@@ -182,14 +187,16 @@ void demo4()
 }
 ```
 
-* Stack behaviour is now controlled by its methods. 
-* A responsible programmer would make sure the stack is 
+* Stack behaviour is now controlled by its methods.
+* A responsible programmer would make sure the stack is
   * not full when pushing, and
   * not empty when popping.
 
-## Stage 5: Multiples stack of different data and capacity 
+## Stage 5: Multiples stack of different data and capacity
 
-Make stack a template.
+Make class `Stack` a template.
+Each concrete stack can store a predefined number of objects of some type.
+The size parameter is optional.
 
 ```cpp
 template <typename T, int MAXSTACKSIZE = 10>
@@ -209,7 +216,7 @@ public:
 	T&   top () { return storage[count-1]; }
 };
 
-void demo5() 
+void demo5()
 {
 	Stack<Cat> s;
 	s.push(1);
@@ -223,21 +230,20 @@ void demo5()
 	assert(dogs.top() == "bello");
 }
 ```
-* You can't mix them: impossible to push a cat on a stack of dogs.
+Note:
+* You can't mix them: It's impossible to push a cat on a stack of dogs.
 
 ## Stage 6: Use standard library implementation
 
-std::stack<T>
-
-rename is_empty(), no method full()
+Use `std::stack<T>`, rename `is_empty()` to `empty()`, no method `is_full()` anymore.
 
 # Stage 7
 "The Bremen musicians" are various types of animals: donkey, rooster, cat and dog.
 Sometimes they get visitors. Sometimes they form a stack.
 
-A C++17 solution with _compile time polymorphism_ using a _union type_:
-* Animal can hold only one object at a time.
-* But the objects can have totally unrelated types.
+A C++17 solution with _compile time polymorphism_ using a _union type_, as it's called in math:
+* `Animal` can hold only one object at a time.
+* But different objects can have totally unrelated types.
 
 ```cpp
 class Cat{};
@@ -262,15 +268,15 @@ struct EvilVisitor
 	void operator()(Rooster x) { std::cout << "hack!\n";  }
 };
 
-void demo7() 
+void demo7()
 {
 	std::stack<Animal> s;
-	
+
 	s.push(Donkey{});
 	s.push(Dog{});
 	s.push(Cat{});
 	s.push(Rooster{});
-	
+
 	while (!s.empty())
 	{
 		Animal animal = s.top();
@@ -282,5 +288,4 @@ void demo7()
 ```
 
 # Stage 8
-would solve the same task using inheritance, runtime polymorphism, and smart pointers
-(TODO).
+It would solve the same task using _inheritance_, _runtime polymorphism_, and_ smart pointers_ (TODO).
