@@ -22,7 +22,7 @@ The trick is how to do that without making them angry...
 
 ```cpp
 using Cat = int; // only integer cats!
-const int MAXSTACKSIZE = 10;
+int const MAXSTACKSIZE = 10;
 
 struct Stack
 {
@@ -32,8 +32,8 @@ struct Stack
 
 // operations
 
-bool is_empty(const Stack& s) { return s.count == 0; }
-bool is_full (const Stack& s) { return s.count == MAXSTACKSIZE; }
+bool is_empty(Stack const& s) { return s.count == 0; }
+bool is_full (Stack const& s) { return s.count == MAXSTACKSIZE; }
 
 void push(Stack& s, Cat x) { s.storage[s.count++] = x; }
 void pop (Stack& s) { s.storage[--s.count] = 0; }
@@ -81,7 +81,7 @@ It's impossible to reason about the correctness of stack without knowing the who
 ```cpp
 class Stack
 {
-	static const int MAXSTACKSIZE = 10;
+	static int const MAXSTACKSIZE = 10;
 
 	int count;
 	std::array<Cat, MAXSTACKSIZE> storage;
@@ -89,8 +89,8 @@ public:
 	friend void create (Stack& s) { s.count = 0; }
 	friend void destroy(Stack& s) { while (not is_empty(s)) pop(s); }
 
-	friend bool is_empty(const Stack& s) { return s.count == 0; }
-	friend bool is_full (const Stack& s) { return s.count == MAXSTACKSIZE; }
+	friend bool is_empty(Stack const& s) { return s.count == 0; }
+	friend bool is_full (Stack const& s) { return s.count == MAXSTACKSIZE; }
 
 	friend void push(Stack& s, Cat x) { s.storage[s.count++] = x; }
 	friend void pop (Stack& s) { s.storage[--s.count] = 0; }
@@ -110,7 +110,7 @@ void demo2()
 ```cpp
 class Stack
 {
-	static const int MAXSTACKSIZE = 10;
+	static int const MAXSTACKSIZE = 10;
 
 	int count;
 	std::array<Cat, MAXSTACKSIZE> storage;
@@ -154,7 +154,7 @@ special functions:
 ```cpp
 class Stack
 {
-	static const int MAXSTACKSIZE = 10;
+	static int const MAXSTACKSIZE = 10;
 
 	int count;
 	std::array<Cat, MAXSTACKSIZE> storage;
