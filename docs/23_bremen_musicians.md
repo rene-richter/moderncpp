@@ -287,4 +287,4 @@ auto demo7()
 ```
 
 # Stage 8
-It would solve the same task using _inheritance_, _runtime polymorphism_, and_ smart pointers_ (TODO).
+It would solve the same task using _inheritance_, _runtime polymorphism_, and _smart pointers_ (TODO).
