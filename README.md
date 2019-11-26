@@ -19,5 +19,6 @@ Notes on Modern C++(17) --- A course for beginners
 	* TODO: Fundamental types
 	* [User-defined types](docs/22_userdefined_types.md)
 	* [Stacking animals](docs/23_bremen_musicians.md)
+	* [Data containers](docs/24_containers.md)
 	
 To be continued...
