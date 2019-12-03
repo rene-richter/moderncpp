@@ -9,8 +9,7 @@ The C++ standard library comes with some (about 100) predefined algorithms, whic
 * return a result or write results into (another) given range of data.
 
 Iterators define the interface between algorithms and containers. 
-They reduce programming complexity from (k algorithms for m container types of n types of data => k x m x n programs) to (k algorithms for j iterator categories
-+ m container types).
+They reduce programming complexity from (k algorithms for m container types of n types of data => k x m x n programs) to (k algorithms for j iterator categories + m container types).
 
 Containers/sequences provide iterator categories with different capabilities.
 They can traverse data
@@ -20,11 +19,12 @@ They can traverse data
 with implications on the _efficiency_ of algorithms.
 
 Example: Rotate a sequence of data by a given number of elements.
+
 Exercise: Implement an efficient algorithm for each category of iterators.
 
 ## Time complexity
 
-The number of necessary operations depends on how many (N) elements are in a sequence. Typical time complexities are (from fast to slow):
+The number of necessary operations depends on how many (N) elements are in a sequence. Typical time complexities in _Big-O notation_ are (from fast to slow):
 
 * logarithmic O(log N)
 * linear O(N)
@@ -33,7 +33,7 @@ The number of necessary operations depends on how many (N) elements are in a seq
 * exponential O(n!)
 
 Example: A linear algorithm takes twice the time for twice number of data,
-a quadratic algorithm four times as long.
+a quadratic algorithm takes four times as long.
 
 Time complexity does not consider how long it takes to process one data element,
 constant factors are abstracted away.
@@ -53,6 +53,8 @@ Exercise: Solve the following tasks for a sequence of data, e.g. a string of cha
 * Replace all non-vocals by underscores.
 * Reorder the vocals in every possible sequence (permutations).
 * Reorder all elements in a randomized sequence.
+
+Link to [solution](../examples/algorithms/algorithme.cpp). 
 
 ## Further information
 
