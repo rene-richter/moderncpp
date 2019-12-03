@@ -54,7 +54,7 @@ Exercise: Solve the following tasks for a sequence of data, e.g. a string of cha
 * Reorder the vocals in every possible sequence (permutations).
 * Reorder all elements in a randomized sequence.
 
-Link to [solution](../examples/algorithms/algorithme.cpp). 
+Link to [solution](../examples/algorithms/algorithms.cpp). 
 
 ## Further information
 
