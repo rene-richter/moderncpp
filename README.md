@@ -15,12 +15,12 @@ Notes on Modern C++(17) --- A course for beginners
 	* [Function templates](docs/12_function_templates.md)
 	* [Function template exercises](docs/13_function_template_exercises.md)
 	* TODO: Lambda expressions
+	* [Library algorithms](docs/15_algorithms.md)
 * Types
 	* TODO: Fundamental types
 	* [User-defined types](docs/22_userdefined_types.md)
 	* [Stacking animals](docs/23_bremen_musicians.md)
 	* [Data containers](docs/24_containers.md)
-	* [Library algorithms](docs/25_algorithms.md)
 	
 	
 To be continued...
