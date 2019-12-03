@@ -56,8 +56,11 @@ Exercise: Solve the following tasks for a sequence of data, e.g. a string of cha
 
 Link to [solution](../examples/algorithms/algorithms.cpp). 
 
-## Further information
+Q: Consider coding all these tasks by yourself. What chance would you estimate to be correct at the first try?
 
-* CppCon 2019 talk: Conor Hoekstra: Algorithm Intuition. https://www.youtube.com/watch?v=pUEnO6SvAMo
-* CppCon 2018 talk: Jonathan Boccara: 105 STL Algorithms in Less Than an Hour. https://www.youtube.com/watch?v=2olsGf6JIkU
-* GoingNative 2013 talk: Sean Parent: C++ Seasoning. https://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning
+## Get familiar with standard algorithms
+
+* Conor Hoekstra: Algorithm Intuition. CppCon 2019 talk. https://www.youtube.com/watch?v=pUEnO6SvAMo
+* Jonathan Boccara: 105 STL Algorithms in Less Than an Hour. CppCon 2018 talk. https://www.youtube.com/watch?v=2olsGf6JIkU
+* Sean Parent: C++ Seasoning. GoingNative 2013 talk. https://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning
+* For in-depth details look for a copy of Cormer, Leiserson, Rivest, Stein: Algorithms. MIT Press (1989). University level stuff.
