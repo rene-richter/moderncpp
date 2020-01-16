@@ -24,9 +24,9 @@ Q:
 
 A: ...
 
-Q: Where are `std::cin` and `std::cout` defined?
+Q: Where and when are `std::cin` and `std::cout` defined?
 
-A: Global variables which static lifetime. --- Warning: There are dragons! (static initialization order fiasco, singletons, dead letter box debugging)
+A: Global variables with static lifetime. --- Warning: There are dragons! (static initialization order fiasco, singletons, dead letter box debugging)
 
 ## Variations on I-N-I-T
 
@@ -72,7 +72,7 @@ Q:
 
 A: ...
 
-## Construction time again
+## Construction time (again)
 
 When a variable is created, a *constructor* is called. It can take parameters, can (should?) assign initialization values to member variables. After construction an object should be in a valid state.
 
@@ -82,12 +82,13 @@ struct Point
     int x, y;
     
     Point() : x{0}, y{0} {}  // default constructor
-    Point(int xv, int yv) : x{xv}, y{yv} {} // user defined constructor
+    Point(int xv, int yv) : x{xv}, y{yv} {} // user-defined constructor
 };
 
 Point p;
-Point q{1,2}; // error
-Point r(3,4);
+Point q{};
+Point r{1,2};
+Point s(3,4);
 ```
 
 When your class provides a constructor, it must be called. Members are constructed before entering the constructor body, even if not in the member initializer list.
@@ -97,7 +98,8 @@ Q: In which order are members constructed? Can you change the order in the membe
 Do you have a lot of work to do in constructor and you don't want to repeat code? Use a delegating constructor:
 
 ````cpp
-struct Point{    
+struct Point
+{    
     int x, y;
     
     Point() : Point{0,0} {}  // delegate member initialization to user defined constructor:
@@ -105,28 +107,23 @@ struct Point{    
 };
 ````
 
-Zero-initialization for fundamental type members in >= C++17 without constructors:
+Default-initialize (i.e. zero-initialize fundamental type members) in >= C++17 without constructors using braces:
 
 ```cpp
 struct Point
 {
-    int x{}, y{};
+    int x{}, y{}; // x = 0, y = 0
 };
 
 Point p;
-Point q{1,2};
-Point r(3,4); // error
+Point q{};
+Point r{1,2};
+Point s(3,4); // error: no user-defined constructor taking two parameters
 ```
 
 When you provide no constructor(s), the compiler provides a default constructor. It does nothing. Member variables are build using their own default constructors (if they have one). Brace list initializers are handed over to member variables. 
 
-## Keep it simple
-
-Constructors can do complicated things (acquire memory blocks, open file handles, ...)
-
-*RAII principle*: Resource Acquisition Is Initialization
-
-In aggregated objects there should be one "wrapper" for each resource (*Single Responsibility principle*), e.g. a `std:string`, `std::vector`, `std::ifstream` / `std::ofstream`, `std::file`,  `std::optional<T>`, `std::shared_pointer<T>`, `std::unique_pointer<T>`etc.
+### Made for loving you (*KISS* = Keep it simple, stupid )
 
 ```cpp
 struct DataCollection
@@ -138,13 +135,33 @@ struct DataCollection
 DataCollection temperatures { "Dresden", { 1, 5, 7, 3 } };
 ```
 
-When member variables are responsible for their own resources, your class does not need to worry about freeing resources: *Rule of Zero*.
+Each member variable of a class has it's own way how to deal with resources; `std::string`and `std::vector` free their memory automatically, when the lifetime of `DataCollection temperatures` ends. No need to worry about freeing them for your class or `struct`, follow the *Rule of Zero*. It's much simpler compared to the *Rule of Five* described below.
+
+In aggregated objects there should be one "wrapper" for each resource (*Single Responsibility principle*), e.g. a `std:string`, `std::vector`, `std::ifstream` / `std::ofstream`, `std::file`,  `std::optional<T>`, `std::shared_pointer<T>`, `std::unique_pointer<T>`etc.
+
+### Resource Acquisition Is Initialization (*RAII*)
+
+(This principle should better be named AC/DC = Acquire in Constructor/Destructor Cleans up.)
+
+Constructors can do complicated things like acquiring memory blocks, opening file handles:
+
+```cpp
+#include <fstream>
+
+auto write_to_file(std::string filename)
+{
+    std::ofstream out{filename};  // std::ofstream out;
+                                  // out.open(filename); 
+    out << "Hello file\n";
+}                                 // out.flush();
+                                  // out.close();
+```
+
+When lifetime of `out` ends, `std::ofstream` flushes file buffer and closes file handle.  The „garbage collector“ of C++ is `}`. 
 
 ## Time to die
 
-The C++ garbage collector is `}`.
-
-Each class has to free its resources in the *destructor*. It's called automatically when the object lifetime ends. 
+Each class should free its resources in the *destructor*. It's called automatically when the object lifetime ends. Member variables are destroyed with (more exactly, after the destruction of) their aggregate. 
 
 ```cpp
 class X
@@ -153,9 +170,7 @@ class X
 };
 ```
 
-Member variables are destroyed with their aggregates.
-
-If a class has to provide a destructor, in most cases all *special functions* have to be user-defined (or deleted) --- *Rule of Five*:
+If a class provides a user-defined destructor, all [*special member functions*](https://namespace-cpp.de/std/doku.php/kennen/spezielle_methoden#regeln) of the class should be user-defined or deleted --- *Rule of Five*:
 
 ```cpp
 struct E
@@ -181,5 +196,88 @@ struct Nondestructible
 Nondestructible until_eternity; // error
 ```
 
+## Big log 
 
+Exercise: Create a class `Log` containing a `std::string` that writes a log message to `std::cerr` when a special member function of this class is called. Analyze the following program. Understand which special member function is called when:
+
+```cpp
+class Log 
+{
+	// TODO:
+};
+
+Log global{"global"};
+
+auto f(Log param)
+{
+	static Log slocal{"static local"};
+
+	Log local{"local in f()"};
+	return Log{"result"};
+}
+
+int main()
+{
+	Log start{"in main"};
+	Log copy{start};
+	Log log;
+
+	for (int i = 0; i < 2; ++i)
+	{
+		Log log{"loop body"};
+		Log result = f({"param"});
+	}
+
+	{	
+		Log log{"a moving story"};
+		Log movedfrom = std::move(log);
+		log = std::move(movedfrom);
+	}
+	Log end{"leaving main"};
+	copy = end;
+}
+```
+
+[Example](../examples/logging/lifetime.cpp) output (including memory address `this` of each Log object):
+
+```
+0x521040 : 'global' constructed.
+0x132fce0 : 'in main' constructed.
+0x132fd00 : 'in main' copy constructed.
+0x132fd20 : 'default' constructed.
+0x132fd40 : 'loop body' constructed.
+0x132fda0 : 'param' constructed.
+0x521080 : 'static local' constructed.
+0x132fbf0 : 'local in f()' constructed.
+0x132fd60 : 'result' constructed.
+0x132fbf0 : 'local in f()' destroyed.
+0x132fda0 : 'param' destroyed.
+0x132fd60 : 'result' destroyed.
+0x132fd40 : 'loop body' destroyed.
+0x132fd40 : 'loop body' constructed.
+0x132fda0 : 'param' constructed.
+0x132fbf0 : 'local in f()' constructed.
+0x132fd60 : 'result' constructed.
+0x132fbf0 : 'local in f()' destroyed.
+0x132fda0 : 'param' destroyed.
+0x132fd60 : 'result' destroyed.
+0x132fd40 : 'loop body' destroyed.
+0x132fd80 : 'a moving story' constructed.
+0x132fda0 : 'a moving story' move constructed.
+0x132fd80 : 'a moving story' move assigned.
+0x132fda0 : '' destroyed.
+0x132fd80 : 'a moving story' destroyed.
+0x132fda0 : 'leaving main' constructed.
+0x132fd00 : 'leaving main' copy assigned.
+0x132fda0 : 'leaving main' destroyed.
+0x132fd20 : 'default' destroyed.
+0x132fd00 : 'leaving main' destroyed.
+0x132fce0 : 'in main' destroyed.
+0x521080 : 'static local' destroyed.
+0x521040 : 'global' destroyed.
+```
+
+
+
+ 
 
