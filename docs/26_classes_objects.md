@@ -126,8 +126,8 @@ ArithmeticSequence::ArithmeticSequence(Number start, Number step)
 {
 }
 
-auto ArithmeticSequence::value() const { return current; }
-void ArithmeticSequence::next() { current += step; }
+auto ArithmeticSequence::value() const { return current_; }
+void ArithmeticSequence::next() { current_ += step_; }
 ````
 
 Test:
