@@ -22,5 +22,6 @@ Notes on Modern C++(17) --- A course for beginners
 	* [Stacking animals](docs/23_bremen_musicians.md)
 	* [Data containers](docs/24_containers.md)
 	* [Object lifetime](docs/25_creation_destruction.md)
+	* [Classes and objects](docs/26_classes_objects.md)
 	
 To be continued...
