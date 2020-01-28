@@ -1,16 +1,14 @@
 #ifndef GEOMETRIC_SEQUENCE_HPP
 #define GEOMETRIC_SEQUENCE_HPP
 
-class GeometricSequence
+#include "sequence.hpp"
+
+class GeometricSequence : public Sequence
 {
 public:
-	using Number = double;
-
     GeometricSequence(Number start, Number factor);
-    Number value() const;
-    void next();
+    void next() override;
 private:    
-    Number current_;
     Number factor_;
 };
 

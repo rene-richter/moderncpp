@@ -2,23 +2,21 @@
 #include "arithmetic_sequence.hpp"
 #include "geometric_sequence.hpp"
 
-int main()
+auto run(Sequence& s)
 {
-    auto odd = ArithmeticSequence{1,2};
-    
     for (int i = 0; i < 10; ++i)
     {
-        std::cout << odd.value() << ' ';
-        odd.next();
-    }
-	std::cout << '\n';
-	
-    auto powers_of_2 = GeometricSequence{1,2};
-    
-    for (int i = 0; i < 10; ++i)
-    {
-        std::cout << powers_of_2.value() << ' ';
-        powers_of_2.next();
+        std::cout << s.value() << ' ';
+        s.next();
     }
 	std::cout << '\n';
 }
+
+int main()
+{
+    auto a = ArithmeticSequence{1,2};
+    auto g = GeometricSequence{1,2};
+ 
+	run(a);
+	run(g);
+ }

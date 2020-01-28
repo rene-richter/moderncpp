@@ -1,16 +1,14 @@
 #ifndef ARITHMETIC_SEQUENCE_HPP
 #define ARITHMETIC_SEQUENCE_HPP
 
-class ArithmeticSequence
+#include "sequence.hpp"
+
+class ArithmeticSequence : public Sequence
 {
 public:
-	using Number = double;
-
     ArithmeticSequence(Number start, Number step);
-    Number value() const;
-    void next();
+    void next() override;
 private:    
-    Number current_;
     Number step_;
 };
 

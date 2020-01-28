@@ -1,4 +1,0 @@
-* Compare both classes. What is similar? What is different?
-* Relocate all similarities into a class Sequence.
-* Make the other sequences derived types.
-* Use them in polymorphic way by reference.
