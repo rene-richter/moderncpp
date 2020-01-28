@@ -158,7 +158,7 @@ Q: Which destructor has to be called?
 
 A: The correct one! 
 
-TODO: virtual containers: `std::vector<std::shared_ptr<Base>>`
+TODO: polymorphic containers: `std::vector<std::shared_ptr<Base>>`
 
 
 
