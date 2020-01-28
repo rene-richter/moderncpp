@@ -70,6 +70,8 @@ public:
     {
     }    
     void next() override { current_ += step_; }
+private:
+    Number step_;
 };
 ```
 
