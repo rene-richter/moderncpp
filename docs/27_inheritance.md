@@ -56,6 +56,8 @@ Q:
 * Draw class diagrams and mark class relationships.
 * How to get initializing parameters from derived constructors to base constructors? 
 
+![UML class diagram](inheritance.png)
+
 ## Derived class
 
 Constructors of derived classes delegate initial values to base class constructor:
