@@ -156,7 +156,7 @@ if (ptr)
 
 Q: Which destructor has to be called?
 
-A: The correct one! 
+A: The correct (virtual) one! 
 
 TODO: polymorphic containers: `std::vector<std::shared_ptr<Base>>`
 
