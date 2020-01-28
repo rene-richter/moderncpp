@@ -23,5 +23,6 @@ Notes on Modern C++(17) --- A course for beginners
 	* [Data containers](docs/24_containers.md)
 	* [Object lifetime](docs/25_creation_destruction.md)
 	* [Classes and objects](docs/26_classes_objects.md)
+	* [Inheritance](docs/27_inheritance.md)
 	
 To be continued...

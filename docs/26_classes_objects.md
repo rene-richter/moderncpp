@@ -126,7 +126,7 @@ ArithmeticSequence::ArithmeticSequence(Number start, Number step)
 {
 }
 
-auto ArithmeticSequence::value() const { return current_; }
+Number ArithmeticSequence::value() const { return current_; }
 void ArithmeticSequence::next() { current_ += step_; }
 ````
 
