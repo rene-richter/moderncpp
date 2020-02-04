@@ -164,5 +164,13 @@ A: The correct (virtual) one!
 
 TODO: polymorphic containers: `std::vector<std::shared_ptr<Base>>`
 
+## Exercise
+
+Implement a hierarchy of classes 
+for a matchmaking agency 
+[text in German](../examples/heiraten/heiraten.pdf)
+generating [this output](../examples/heiraten/output.txt).
+
+
 
 
