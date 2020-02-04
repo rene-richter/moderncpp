@@ -1,0 +1,25 @@
+Angebot:  Anton ?? Berta
+Partner:  Anton == Berta
+Angebot:  Anton ?? Doris
+Angebot:  Claus ?? Berta
+Trennung: Anton <> Berta
+Partner:  Claus == Berta
+Angebot:  Claus ?? Doris
+Trennung: Berta <> Claus
+Partner:  Claus == Doris
+Angebot:  Ernst ?? Berta
+Partner:  Ernst == Berta
+Angebot:  Ernst ?? Doris
+Angebot:  Berta ?? Anton
+Trennung: Ernst <> Berta
+Partner:  Berta == Anton
+Angebot:  Berta ?? Claus
+Angebot:  Berta ?? Ernst
+Angebot:  Doris ?? Anton
+Angebot:  Doris ?? Claus
+Angebot:  Doris ?? Ernst
+Anton == Berta
+Claus == Doris
+Ernst == -
+Berta == Anton
+Doris == Claus
