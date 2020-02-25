@@ -170,6 +170,11 @@ Implement a hierarchy of classes
 for a matchmaking agency 
 [text in German](../examples/heiraten/heiraten.pdf)
 generating [this output](../examples/heiraten/output.txt).
+Base class 
+[interface](../examples/heiraten/src/single.h)
+and
+[implementation](../examples/heiraten/src/single.h) 
+are given. 
 
 
 
