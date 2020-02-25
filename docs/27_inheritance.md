@@ -168,7 +168,7 @@ TODO: polymorphic containers: `std::vector<std::shared_ptr<Base>>`
 
 Implement a hierarchy of classes 
 for a matchmaking agency 
-[text in German](../examples/heiraten/heiraten.pdf)
+([text in German](../examples/heiraten/heiraten.pdf))
 generating [this output](../examples/heiraten/output.txt).
 Base class 
 [interface](../examples/heiraten/src/single.h)
