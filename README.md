@@ -24,5 +24,6 @@ Notes on Modern C++(17) --- A course for beginners
 	* [Object lifetime](docs/25_creation_destruction.md)
 	* [Classes and objects](docs/26_classes_objects.md)
 	* [Inheritance](docs/27_inheritance.md)
+	* [References](docs/28_references.md)	
 	
 To be continued...
