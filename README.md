@@ -26,6 +26,6 @@ Notes on Modern C++(17) --- A course for beginners
 	* [Inheritance](docs/27_inheritance.md)
 	* [References](docs/28_references.md)	
 * In-depth
-	* [Pointers](docs/31_pointers)
+	* [Pointers](docs/31_pointers.md)
 	
 To be continued...
