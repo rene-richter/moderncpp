@@ -115,7 +115,7 @@ dangling = 666; // undefined behavior
 Exercise:
 
 * Why would this be dangerous? What does “dangling” mean?
-* What does “undefined behavior” mean? 
+* What does [undefined behavior](https://en.cppreference.com/w/cpp/language/ub) mean? 
 * Why is a method returning a member reference o.k. then? 
 * What about that:
 

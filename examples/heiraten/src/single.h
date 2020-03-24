@@ -27,7 +27,7 @@ double abweichung(Profil wunsch, Profil real);
 class Single
 {
 public:
-  virtual ~Single() = default;	
+  virtual ~Single() { if (partner_) partner_->partner_ = nullptr; }	
   
   Single(std::string name, char geschlecht, Profil eigen, Profil wunsch);
 
