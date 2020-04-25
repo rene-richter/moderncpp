@@ -27,5 +27,7 @@ Notes on Modern C++(17) --- A course for beginners
 	* [References](docs/28_references.md)	
 * In-depth
 	* [Pointers](docs/31_pointers.md)
+	* [Owning pointers and responsibility](docs/32_property_obliges.md)
 	
+
 To be continued...
