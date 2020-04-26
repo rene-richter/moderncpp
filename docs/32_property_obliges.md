@@ -34,7 +34,7 @@ public:
 };
 ```
 
-Although following the AC/DC principle, this class is fundamentally incorrect. The body of
+Although following the AC/DC principle, this class is fundamentally incorrect (see [example code](../examples/smartptr/crash.cpp)). The body of
 
 ```cpp
 void crash1()
