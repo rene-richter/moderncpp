@@ -1,6 +1,12 @@
 # Data containers
 
+> When choosing a container remember: vector is best.
+> Leave a comment if you choose from the rest.
+>
+> > --- Tony van Eerd: [PostModern C++](https://www.youtube.com/watch?v=Zx_Tjp9WIII), C++ Meeting Group, Prague (2020)
+
 C++ standard library _containers_ 
+
 * store data of a selected type, 
 * copy or move data around,
 * differ in the way they arrange data,
@@ -92,7 +98,8 @@ Q:
 
 ## Associative containers
 Sorted containers `set<K>` and `map<K,V>` 
-(aka as _dictionary_ or _associative array_) etc.
+(aka _dictionary_ or _associative array_) etc.
+
 * always keep data in an "less-than" ordered sequence of _keys_.
 * Inserting, finding, and removing data shall be done in O(log n) time.
   So they can be implemented as balanced binary search tree (_red-black tree_).

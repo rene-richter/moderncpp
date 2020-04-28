@@ -20,7 +20,7 @@ Q: What can go wrong?
 
 A: If one of the allocations fails and throws an exception after the other one was allocated, the other pointer will never be deleted. (We can’t tell which one is first and which one second: C++ doesn’t define the evaluation order of parameters.)
 
-Therefore: no naked new! Resource allocation should be done in a class or struct that *owns the (one) resource* and is responsible for freeing it (`delete` memory etc.). For each `new`ed object there must be exactly one `delete`. The responsibility of the destructor is to clean up resources in a exception-safe way. It should give the resource back, otherwise there would be a *resource leak*. *Resource Allocation Is Initialization* (RAII principle) is a unfortunate name. Is should better be called *AC/DC* principle (Acquiring Constructor, Destructor Clean-up).
+Therefore: no naked new! Resource allocation should be done in a class or struct that *owns the (one) resource* and is responsible for freeing it (`delete` memory etc.). For each `new`ed object there must be exactly one `delete`. The responsibility of the destructor is to clean up resources in a exception-safe way. It should give the resource back, otherwise there would be a *resource leak*. *Resource Allocation Is Initialization* (RAII principle) is an unfortunate name. Is should better be called *AC/DC* principle (Acquiring Constructor, Destructor Clean-up).
 
 ## Leaks, zombies and memory corruption
 
