@@ -1,7 +1,7 @@
 # Data containers
 
-> When choosing a container remember: vector is best.
-> Leave a comment if you choose from the rest.
+> When choosing a container remember: vector is best.  
+> Leave a comment if you choose from the rest.   
 >
 > > --- Tony van Eerd: [PostModern C++](https://www.youtube.com/watch?v=Zx_Tjp9WIII), C++ Meeting Group, Prague (2020)
 
