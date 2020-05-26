@@ -14,7 +14,7 @@ Notes on Modern C++(17) --- A course for beginners
 * [Functions](docs/11_functions.md)
 	* [Function templates](docs/12_function_templates.md)
 	* [Function template exercises](docs/13_function_template_exercises.md)
-	* [Lambda expressions](docs/13_lambdas.md)
+	* [Lambda expressions](docs/14_lambdas.md)
 	* [Library algorithms](docs/15_algorithms.md)
 * Types
 	* TODO: Fundamental types
