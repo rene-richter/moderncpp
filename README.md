@@ -30,7 +30,7 @@ Notes on Modern C++(17) --- A course for beginners
 	* [Owning pointers and responsibility](docs/32_property_obliges.md)
 	* [Smart pointers](docs/33_smart_pointers.md)
 	* [Optional values](docs/34_optional.md)
-	* TODO: Overloading operators
+	* [Overloading operators](docs/35_overloading_operators.md)
 * TODO: Libraries
 * TODO: C++20
 
