@@ -1,6 +1,9 @@
 # Lambda expressions
 
-Lambda expressions (short: lambdas) are anonymous functions, more exactly: function objects or [closures](https://en.wikipedia.org/wiki/Closure_(computer_programming)). [Lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus), a formal system developed in the 1930s, is the theoretical foundation of functional programming. 
+Lambda expressions (short: lambdas) are anonymous functions, more exactly: 
+[function objects](35_overloading_operators.md#Function-objects) or 
+[closures](https://en.wikipedia.org/wiki/Closure_(computer_programming)). 
+[Lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus), a formal system developed in the 1930s, is the theoretical foundation of functional programming. 
 
 ## Defining lambdas
 
