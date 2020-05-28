@@ -84,7 +84,7 @@ auto demo(doule x)
 }   // 2 * x + 1
 ```
 
-[Lambda expressions](14_lambdas.md) are function objects:
+[Lambda expressions](14_lambdas.md) are compiler-generated function objects of an anonymous type with `const`-qualified `operator()`:
 
 ```cpp
 auto demo2(double x)

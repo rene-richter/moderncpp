@@ -11,15 +11,17 @@ Lambda expressions (short: lambdas) are anonymous functions, more exactly:
 auto square = [](auto x){ return x*x; };
 ```
 
-defines a variable of an anonymous (unique, but unkown) type. Therefore `auto`is necessary. A lambda with `auto` parameters is a template.
+defines a variable of an anonymous, unique, but unknown compiler-generated type. Therefore `auto`in front of `square` is necessary. 
 
 ## Calling lambdas
 
 A named lambda behaves like / is a function:
 
 ```cpp
-std::cout << square(5); // 25
+std::cout << square(5);   // 25
+std::cout << square(1.2); // 1.44
 ```
+Lambda calls with `auto` parameters are implemented as templates.
 
 ## Immediately invoked lambda expressions (IILE)
 
@@ -37,7 +39,7 @@ const auto squares =
 
 Naming the lambda is not necessary. Call it immediately. Just add a function call with parameters following the lambda expression. 
 
-Fun question: What does `[]{}();` mean? Hint: Parantheses between `[]` and function body `{}` are optional and can be omitted for lambdas without parameters. 
+Fun question: What does `[]{}();` mean? Hint: Parentheses between `[]` and function body `{}` are optional and can be omitted for lambdas without parameters. 
 
 ## Lambdas as callbacks in standard algorithms
 
@@ -58,7 +60,7 @@ auto define_callback_in_place(std::vector<int> v)
 }
 ```
 
-Defining the lambda in place improves locality of code. There is no need to define a function elsewhere, no need to lookup where its definition is located in the codebase. Compilers can inline and optimize the generated code.
+Defining the lambda in place improves locality of code. There is no need to define a function or function object elsewhere, no need to lookup where its definition is located in the codebase. Compilers can inline and optimize the generated code.
 
 ## Closure: capture state easily
 
