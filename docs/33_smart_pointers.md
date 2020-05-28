@@ -14,43 +14,43 @@ When used as class members, you don't have to define special member functions ([
 
 The factory helper function `make_unique<T>(init_values)` encapsulates operator `new` and returns `std::unique_ptr<T>` for local variables, parameters, and return types. To transfer ownership from a non-temporary variable, use `std::move()`. `std::move()` doesn’t move the ownership, it prepares only for the transfer. After the ownership is transferred, the former owner is empty.
 
- ```cpp
+```cpp
 #include <memory>
 #include <iostream>
 
 auto local()
 {
-	auto p = std::make_unique<int>(0);
-	std::cout << *p << " lives until end of block\n";	
+    auto p = std::make_unique<int>(0);
+    std::cout << *p << " lives until end of block\n";    
 }
 
 auto producer(int n)
 {
-	auto p = std::make_unique<int>(n);
-	std::cout << "produced " << *p << '\n';
-	return p;		
+    auto p = std::make_unique<int>(n);
+    std::cout << "produced " << *p << '\n';
+    return p;        
 }
 
 auto consumer(std::unique_ptr<int> p)
 {
-	if (p) std::cout << "consumed " << *p << '\n';
+    if (p) std::cout << "consumed " << *p << '\n';
 }
 
 int main()
 {
-	// transfer of ownership:
-	consumer(producer(1));
-	
-	std::unique_ptr<int> p;
-	if (p) std::cout << "should be empty " << *p << '\n';
-	
-	p = producer(2);
-	if (p) std::cout << "got " << *p << '\n';
+    // transfer of ownership:
+    consumer(producer(1));
+    
+    std::unique_ptr<int> p;
+    if (p) std::cout << "should be empty " << *p << '\n';
+    
+    p = producer(2);
+    if (p) std::cout << "got " << *p << '\n';
 
-	consumer(std::move(p));
-	if (p) std::cout << "stayed " << *p << '\n';
+    consumer(std::move(p));
+    if (p) std::cout << "stayed " << *p << '\n';
 }
- ```
+```
 
 Even if `producer()` is called without transferring the result to a consumer, there is no memory leak.
 
@@ -89,6 +89,3 @@ if (auto sp = w.lock())  ... // use *sp
 TODO: Find good example involving `weak_ptr<T>`: Team and Member? Parent/child? Observer/observable pattern?
 
 YouTube video tip: Herb Sutter [Leak-Freedom in C++ ... By Default](https://www.youtube.com/watch?v=JfmTagWcqoE)  CppCon (2016).
-
-
-

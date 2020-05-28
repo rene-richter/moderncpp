@@ -27,8 +27,8 @@ int const MAXSTACKSIZE = 10;
 
 struct Stack
 {
-	int count;
-	std::array<Cat, MAXSTACKSIZE> storage;
+    int count;
+    std::array<Cat, MAXSTACKSIZE> storage;
 };
 
 // operations
@@ -47,17 +47,17 @@ void destroy(Stack& s) { while (not is_empty(s)) pop(s); }
 
 void demo1()
 {
-	Stack s;
-	create(s);
+    Stack s;
+    create(s);
 
-	push(s, 1);
-	push(s, 2);
-	push(s, 3);
-	assert(top(s) == 3);
-	pop(s);
-	assert(top(s) == 2);
+    push(s, 1);
+    push(s, 2);
+    push(s, 3);
+    assert(top(s) == 3);
+    pop(s);
+    assert(top(s) == 2);
 
-	destroy(s);
+    destroy(s);
 }
 ```
 
@@ -84,25 +84,25 @@ It's up to the class definition, whom to declare as friend.
 ```cpp
 class Stack
 {
-	static int const MAXSTACKSIZE = 10;
+    static int const MAXSTACKSIZE = 10;
 
-	int count;
-	std::array<Cat, MAXSTACKSIZE> storage;
+    int count;
+    std::array<Cat, MAXSTACKSIZE> storage;
 
-	friend void create (Stack& s) { s.count = 0; }
-	friend void destroy(Stack& s) { while (not is_empty(s)) pop(s); }
+    friend void create (Stack& s) { s.count = 0; }
+    friend void destroy(Stack& s) { while (not is_empty(s)) pop(s); }
 
-	friend bool is_empty(Stack const& s) { return s.count == 0; }
-	friend bool is_full (Stack const& s) { return s.count == MAXSTACKSIZE; }
+    friend bool is_empty(Stack const& s) { return s.count == 0; }
+    friend bool is_full (Stack const& s) { return s.count == MAXSTACKSIZE; }
 
-	friend void push(Stack& s, Cat x) { s.storage[s.count++] = x; }
-	friend void pop (Stack& s) { s.storage[--s.count] = 0; }
-	friend Cat& top (Stack& s) { return s.storage[s.count-1]; }
+    friend void push(Stack& s, Cat x) { s.storage[s.count++] = x; }
+    friend void pop (Stack& s) { s.storage[--s.count] = 0; }
+    friend Cat& top (Stack& s) { return s.storage[s.count-1]; }
 };
 
 void demo2() 
 {
-	// same as before
+    // same as before
 }
 ```
 * One issue solved: no access to data members from outside (except friends).
@@ -113,35 +113,35 @@ void demo2()
 ```cpp
 class Stack
 {
-	static int const MAXSTACKSIZE = 10;
+    static int const MAXSTACKSIZE = 10;
 
-	int count;
-	std::array<Cat, MAXSTACKSIZE> storage;
+    int count;
+    std::array<Cat, MAXSTACKSIZE> storage;
 public:
-	void create () { count = 0; }
-	void destroy() { while (not is_empty()) pop(); }
+    void create () { count = 0; }
+    void destroy() { while (not is_empty()) pop(); }
 
-	bool is_empty() const { return count == 0; }
-	bool is_full () const { return count == MAXSTACKSIZE; }
+    bool is_empty() const { return count == 0; }
+    bool is_full () const { return count == MAXSTACKSIZE; }
 
-	void push(Cat x) { storage[count++] = x; }
-	void pop () { storage[--count] = 0; }
-	Cat& top () { return storage[count-1]; }
+    void push(Cat x) { storage[count++] = x; }
+    void pop () { storage[--count] = 0; }
+    Cat& top () { return storage[count-1]; }
 };
 
 void demo3()
 {
-	Stack s;
-	s.create();
+    Stack s;
+    s.create();
 
-	s.push(1);
-	s.push(2);
-	s.push(3);
-	assert(s.top() == 3);
-	s.pop();
-	assert(s.top() == 2);
+    s.push(1);
+    s.push(2);
+    s.push(3);
+    assert(s.top() == 3);
+    s.pop();
+    assert(s.top() == 2);
 
-	s.destroy();
+    s.destroy();
 }
 ```
 Note:
@@ -158,31 +158,31 @@ Every class has some _special functions_:
 ```cpp
 class Stack
 {
-	static int const MAXSTACKSIZE = 10;
+    static int const MAXSTACKSIZE = 10;
 
-	int count;
-	std::array<Cat, MAXSTACKSIZE> storage;
+    int count;
+    std::array<Cat, MAXSTACKSIZE> storage;
 public:
-	Stack() { count = 0; }
-	~Stack() { while (not is_empty()) pop(); }
+    Stack() { count = 0; }
+    ~Stack() { while (not is_empty()) pop(); }
 
-	bool is_empty() const { return count == 0; }
-	bool is_full () const { return count == MAXSTACKSIZE; }
+    bool is_empty() const { return count == 0; }
+    bool is_full () const { return count == MAXSTACKSIZE; }
 
-	void push(Cat x) { storage[count++] = x; }
-	void pop () { storage[--count] = 0; }
-	Cat& top () { return storage[count-1]; }
+    void push(Cat x) { storage[count++] = x; }
+    void pop () { storage[--count] = 0; }
+    Cat& top () { return storage[count-1]; }
 };
 
 void demo4()
 {
-	Stack s;
-	s.push(1);
-	s.push(2);
-	s.push(3);
-	assert(s.top() == 3);
-	s.pop();
-	assert(s.top() == 2);
+    Stack s;
+    s.push(1);
+    s.push(2);
+    s.push(3);
+    assert(s.top() == 3);
+    s.pop();
+    assert(s.top() == 2);
 }
 ```
 
@@ -201,32 +201,32 @@ The size parameter is optional when defining a stack object.
 template <typename T, int MAXSTACKSIZE = 10>
 class Stack
 {
-	int count;
-	std::array<T, MAXSTACKSIZE> storage;
+    int count;
+    std::array<T, MAXSTACKSIZE> storage;
 public:
-	Stack() { count = 0; }
-	~Stack() { while (not is_empty()) pop(); }
+    Stack() { count = 0; }
+    ~Stack() { while (not is_empty()) pop(); }
 
-	bool is_empty() const { return count == 0; }
-	bool is_full () const { return count == MAXSTACKSIZE; }
+    bool is_empty() const { return count == 0; }
+    bool is_full () const { return count == MAXSTACKSIZE; }
 
-	void push(T x) { storage[count++] = x; }
-	void pop () { storage[--count] = 0; }
-	T&   top () { return storage[count-1]; }
+    void push(T x) { storage[count++] = x; }
+    void pop () { storage[--count] = 0; }
+    T&   top () { return storage[count-1]; }
 };
 
 void demo5()
 {
-	Stack<Cat> s;
-	s.push(1);
-	s.push(2);
-	assert(s.top() == 2);
+    Stack<Cat> s;
+    s.push(1);
+    s.push(2);
+    assert(s.top() == 2);
 
-	using Dog = std::string;
+    using Dog = std::string;
 
-	Stack<Dog, 5> dogs;
-	dogs.push("bello");
-	assert(dogs.top() == "bello");
+    Stack<Dog, 5> dogs;
+    dogs.push("bello");
+    assert(dogs.top() == "bello");
 }
 ```
 Note:
@@ -253,36 +253,36 @@ using Animal = std::variant<Donkey, Dog, Cat, Rooster>;
 
 struct FriendlyVisitor
 {
-	auto operator()(Cat x) { return "mew ";  }
-	auto operator()(Dog x) { return "woof ";  }
-	auto operator()(Donkey x) { return "hee-haw ";  }
-	auto operator()(Rooster x) { return "cock-a-doodle-doo ";  }
+    auto operator()(Cat x) { return "mew ";  }
+    auto operator()(Dog x) { return "woof ";  }
+    auto operator()(Donkey x) { return "hee-haw ";  }
+    auto operator()(Rooster x) { return "cock-a-doodle-doo ";  }
 };
 
 struct EvilVisitor
 {
-	auto operator()(Cat x) { return "scratch!\n";  }
-	auto operator()(Dog x) { return "bite!\n";  }
-	auto operator()(Donkey x) { return "bash!\n";  }
-	auto operator()(Rooster x) { return "hack!\n";  }
+    auto operator()(Cat x) { return "scratch!\n";  }
+    auto operator()(Dog x) { return "bite!\n";  }
+    auto operator()(Donkey x) { return "bash!\n";  }
+    auto operator()(Rooster x) { return "hack!\n";  }
 };
 
 auto demo7() 
 {
-	std::stack<Animal> s;
-	
-	s.push(Donkey{});
-	s.push(Dog{});
-	s.push(Cat{});
-	s.push(Rooster{});
-	
-	while (!s.empty())
-	{
-		Animal animal = s.top();
-		s.pop();
-		std::cout << std::visit(FriendlyVisitor{}, animal);
-		std::cout << std::visit(EvilVisitor{}, animal);
-	}
+    std::stack<Animal> s;
+    
+    s.push(Donkey{});
+    s.push(Dog{});
+    s.push(Cat{});
+    s.push(Rooster{});
+    
+    while (!s.empty())
+    {
+        Animal animal = s.top();
+        s.pop();
+        std::cout << std::visit(FriendlyVisitor{}, animal);
+        std::cout << std::visit(EvilVisitor{}, animal);
+    }
 }
 ```
 

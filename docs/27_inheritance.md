@@ -29,7 +29,7 @@ int main()
 {
     auto a = ArithmeticSequence{1,2};
     auto g = GeometricSequence{1,2};
- 	run(a);   
+     run(a);   
     run(g);
 }
 ```
@@ -66,9 +66,9 @@ Constructors of derived classes delegate initial values to base class constructo
 class ArithmeticSequence : public Sequence
 {
 public:
-	ArithmeticSequence(Number start, Number step) 
-	: Sequence{start}
-	, step_{step} 
+    ArithmeticSequence(Number start, Number step) 
+    : Sequence{start}
+    , step_{step} 
     {
     }    
     void next() override { current_ += step_; }
@@ -77,7 +77,7 @@ private:
 };
 ```
 
-Q:	
+Q:    
 
 * Why is inheritance marked `public Sequence`? What is private / protected inheritance?
 * What does `private` mean in C++? Do derived class method have access to private members of base class?
@@ -110,19 +110,19 @@ Allow `protected` access for derived classes to data members.
 Q: How to declare / implement `next()` in class `Sequence`?
 
 ```cpp
-	void next() {}
+    void next() {}
 ```
 
 leads to error in derived classes: cannot override `next()`, has to be a *virtual method*:
 
 ````cpp
-	virtual void next() {}
+    virtual void next() {}
 ````
 
 Does implementing `Sequence::next()` have any sense? Should we have instances of base class? If not, mark it as *abstract method*:
 
 ```cpp
-	virtual void next() = 0;
+    virtual void next() = 0;
 ```
 
 A class with not overridden abstract methods is called *abstract class*. You can`t instantiate objects of an abstract class.
@@ -130,7 +130,7 @@ A class with not overridden abstract methods is called *abstract class*. You can
 Beware! Important rule:  To prevent resource leaks, whenever you declare a base class with virtual methods, also define a virtual destructor:
 
 ```cpp
-	virtual ~Sequence() = default;
+    virtual ~Sequence() = default;
 ```
 
 We will understand that, when we know about runtime polymorphism. (Also, there may be some exceptions...)
@@ -151,11 +151,11 @@ Since subtype object can be used instead of base type objects (Liskov substituti
 std::shared_ptr<Sequence> ptr = nullptr;
 
 if (1 == some_user_input())
-	ptr = std::make_shared<ArithmeticSequence>(1,2);
+    ptr = std::make_shared<ArithmeticSequence>(1,2);
 else
-	ptr = std::make_shared<GeometricSequence>(1,2);
+    ptr = std::make_shared<GeometricSequence>(1,2);
 if (ptr)
-	run(*ptr);
+    run(*ptr);
  ```
 
 Q: Which destructor has to be called?

@@ -203,38 +203,38 @@ Exercise: Create a class `Log` containing a `std::string` that writes a log mess
 ```cpp
 class Log 
 {
-	// TODO:
+    // TODO:
 };
 
 Log global{"global"};
 
 auto f(Log param)
 {
-	static Log slocal{"static local"};
+    static Log slocal{"static local"};
 
-	Log local{"local in f()"};
-	return Log{"result"};
+    Log local{"local in f()"};
+    return Log{"result"};
 }
 
 int main()
 {
-	Log start{"in main"};
-	Log copy{start};
-	Log log;
+    Log start{"in main"};
+    Log copy{start};
+    Log log;
 
-	for (int i = 0; i < 2; ++i)
-	{
-		Log log{"loop body"};
-		Log result = f({"param"});
-	}
+    for (int i = 0; i < 2; ++i)
+    {
+        Log log{"loop body"};
+        Log result = f({"param"});
+    }
 
-	{	
-		Log log{"a moving story"};
-		Log movedfrom = std::move(log);
-		log = std::move(movedfrom);
-	}
-	Log end{"leaving main"};
-	copy = end;
+    {    
+        Log log{"a moving story"};
+        Log movedfrom = std::move(log);
+        log = std::move(movedfrom);
+    }
+    Log end{"leaving main"};
+    copy = end;
 }
 ```
 

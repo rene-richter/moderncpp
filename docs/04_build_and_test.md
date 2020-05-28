@@ -11,10 +11,10 @@ in header `gregorian.h` is needed for this program `leapyear.cpp`:
 
 int main()
 {
-	int year;
-	std::cin >> year;
-	std::cout << year << ' ' 
-		<< std::boolalpha << isLeapYear(year) << '\n';
+    int year;
+    std::cin >> year;
+    std::cout << year << ' ' 
+        << std::boolalpha << isLeapYear(year) << '\n';
 }
 ```
 
@@ -27,37 +27,37 @@ Describe requirements for Gregorian calendar in `leapyeartests.cpp`:
 
 TEST_CASE("years not divisible by 4 are not leap years")
 {
-	CHECK(isLeapYear(2019) == false);
-	CHECK(isLeapYear(2021) == false);
-	CHECK(isLeapYear(2022) == false);
-	CHECK(isLeapYear(2023) == false);
-	CHECK(isLeapYear(2025) == false);
-	CHECK(isLeapYear(2026) == false);
-	CHECK(isLeapYear(2027) == false);
-	CHECK(isLeapYear(2099) == false);
+    CHECK(isLeapYear(2019) == false);
+    CHECK(isLeapYear(2021) == false);
+    CHECK(isLeapYear(2022) == false);
+    CHECK(isLeapYear(2023) == false);
+    CHECK(isLeapYear(2025) == false);
+    CHECK(isLeapYear(2026) == false);
+    CHECK(isLeapYear(2027) == false);
+    CHECK(isLeapYear(2099) == false);
 }
 
 TEST_CASE("years divisible by 4 are leap years")
 {
-	CHECK(isLeapYear(2020) == true);
-	CHECK(isLeapYear(2024) == true);
-	CHECK(isLeapYear(2028) == true);
-	CHECK(isLeapYear(2096) == true);
+    CHECK(isLeapYear(2020) == true);
+    CHECK(isLeapYear(2024) == true);
+    CHECK(isLeapYear(2028) == true);
+    CHECK(isLeapYear(2096) == true);
 }
 
 TEST_CASE("years divisible by 100 are not leap years")
 {
-	CHECK(isLeapYear(1900) == false);
-	CHECK(isLeapYear(2100) == false);
-	CHECK(isLeapYear(2200) == false);
-	CHECK(isLeapYear(2300) == false);
-	CHECK(isLeapYear(2500) == false);
+    CHECK(isLeapYear(1900) == false);
+    CHECK(isLeapYear(2100) == false);
+    CHECK(isLeapYear(2200) == false);
+    CHECK(isLeapYear(2300) == false);
+    CHECK(isLeapYear(2500) == false);
 }
 
 TEST_CASE("years divisible by 400 are leap years")
 {
-	CHECK(isLeapYear(2000) == true);
-	CHECK(isLeapYear(2400) == true);
+    CHECK(isLeapYear(2000) == true);
+    CHECK(isLeapYear(2400) == true);
 }
 ```
 Add a `testmain.cpp`:
@@ -110,7 +110,7 @@ A minimal version of `gregorian.cpp`, which is correct for about 75% of all year
 ```cpp
 bool isLeapYear(int year)
 {
-	return false;
+    return false;
 }
 ```
 compiles, passes 2 of 4 tests:

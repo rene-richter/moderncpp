@@ -4,9 +4,9 @@
 ```cpp
 struct Person
 {
-	std::string name;
-	int born;
-	int died;
+    std::string name;
+    int born;
+    int died;
 };
 
 Person p{"Galilei", 1564, 1642};
@@ -17,15 +17,15 @@ Access to data members
 ```cpp
 void print(Person p)
 {
-	std::cout << p.name << '\t' << p.born << '-' << p.died << '\n'; 
+    std::cout << p.name << '\t' << p.born << '-' << p.died << '\n'; 
 }
 
 Person read_data_for_person()
 {
-	Person p;
-	char dummy;
-	std::cin >> p.name >> p.born >> dummy >> p.died;
-	return p;
+    Person p;
+    char dummy;
+    std::cin >> p.name >> p.born >> dummy >> p.died;
+    return p;
 }
 ```
 
@@ -58,17 +58,17 @@ Initializer lists fill containers at construction time:
 
 ```cpp
 std::vector<Person> persons
-	{
-		{"Galilei", 1564, 1642},
-		{"Newton" , 1642, 1726},
-		{"Hawking", 1942, 2018},
-	};
+    {
+        {"Galilei", 1564, 1642},
+        {"Newton" , 1642, 1726},
+        {"Hawking", 1942, 2018},
+    };
 ```
 Iterate over all elements
 ```cpp
 for (auto person : persons)
 { 
-	print(person);
+    print(person);
 }
 ```
 or unpack data with *structured bindings* (different names are possible):
@@ -76,7 +76,7 @@ or unpack data with *structured bindings* (different names are possible):
 ```cpp
 for (auto [lastname, year_of_birth, year_of_death_not_used] : persons)
 { 
-	std::cout << lastname << '\t' << year_of_birth << '\n';
+    std::cout << lastname << '\t' << year_of_birth << '\n';
 }
 ```
 
@@ -122,7 +122,7 @@ This loop does not change names in container `persons`, since it works on copies
 ```cpp
 for (auto person : persons)
 {
-	person.name = "N.N."; // changes a copy
+    person.name = "N.N."; // changes a copy
 }
 ```
 ### References
@@ -130,7 +130,7 @@ Refer to existing objects using a reference `&` (an "alias" name):
 ```cpp
 for (auto& person : persons)
 {
-	person.name = "N.N."; // changes values in container
+    person.name = "N.N."; // changes values in container
 }
 ```
 No copy takes place, so references are cheaper. 
@@ -138,7 +138,7 @@ If you don't want to modify values, mark them as `const`:
 ```cpp
 for (auto const& person : persons)
 {
-	person.name = "N.N."; // error
+    person.name = "N.N."; // error
 }
 ```
 ### Moving stories about expiring values
@@ -214,6 +214,6 @@ in the same codebase which would be harder to maintain.
 * How to measure the costs of memory allocation/release, copy/move operations?
 * What is *small string optimization*? When does it apply?
 * Compare C++ to other languages you know: 
-	* Do they take function parameters by value or by reference? 
-	* Do they have value semantics or reference semantics? 
-	* Can the programmer change the default behaviour?
+    * Do they take function parameters by value or by reference? 
+    * Do they have value semantics or reference semantics? 
+    * Can the programmer change the default behaviour?

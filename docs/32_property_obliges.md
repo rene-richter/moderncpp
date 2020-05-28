@@ -39,8 +39,8 @@ Although following the AC/DC principle, this class is fundamentally incorrect (s
 ```cpp
 void crash1()
 {
-	Wrong a{1}; // 1
-	Wrong b{2}; // 2
+    Wrong a{1}; // 1
+    Wrong b{2}; // 2
     a = b;      // 3
     // ...      // 4
 }               // 5, 6
@@ -49,12 +49,12 @@ void crash1()
 is equivalent to
 
 ```cpp
-	int* p = new int(1);
-	int* q = new int(2);
-	p = q;     // 3
+    int* p = new int(1);
+    int* q = new int(2);
+    p = q;     // 3
     // ...     // 4
-	delete q;  // 5
-	delete p;  // 6
+    delete q;  // 5
+    delete p;  // 6
 ```
 
 * Assigning another address to `p` in line 3, the address of int(1) to is lost. You can’t access or free it anymore. There is a memory leak.
@@ -67,8 +67,8 @@ The culprit is `a = b;` the assignment operator for classes containing pointers 
 ```cpp
 void crash3()
 {
-	Wrong a{3};
-	Wrong b{a}; // copies the pointer
+    Wrong a{3};
+    Wrong b{a}; // copies the pointer
     // ... sharing address
 }   // double delete
 ```
@@ -80,9 +80,9 @@ void use(Wrong param)
 
 void crash4()
 {
-	Wrong w{4};
-	use(w); // copy
-	// ... pointer to deleted memory
+    Wrong w{4};
+    use(w); // copy
+    // ... pointer to deleted memory
 }   // double delete
 ```
 
@@ -103,11 +103,11 @@ A safe way is to `delete` dangerous operations:
 ```cpp
 class Safe
 {
-	int p_;
+    int p_;
 public:
     Safe(int n) : p_{new int(n)} {}
     ~Safe() { delete p_; }
-	// forbid auto generation of special functions:
+    // forbid auto generation of special functions:
     Safe(Safe const& orig) = delete;           // copy constructor 
     Safe& operator=(Safe const& rhs) = delete; // copy assignment
     Safe(Safe&& orig) = delete;                // move constructor
@@ -158,7 +158,7 @@ public:
     Movable(Movable&& orig)
     : p_{nullptr}
     {
-    	std::swap(orig.p_, p_); 
+        std::swap(orig.p_, p_); 
     }
     Movable& operator=(Movable&& rhs)
     {
@@ -192,13 +192,13 @@ A: The good news is: No, if the pointer/resource is encapsulated in a member, th
 ```cpp
 struct Movable // implements transfer of ownership, no copy
 {
-	std::unique_ptr<int> p;
+    std::unique_ptr<int> p;
     // ...
 };
 
 struct Shared // shallow copies with ref counting
 {
-	std::shared_ptr<int> p;
+    std::shared_ptr<int> p;
     // ...
 };
 ```

@@ -74,13 +74,13 @@ auto s2 = os.str(); // return output as string
 ```
 ```cpp
 {
-	auto in = std::ifstream{"inputfilename.txt"};
-	if (in) in >> x >> y;
+    auto in = std::ifstream{"inputfilename.txt"};
+    if (in) in >> x >> y;
 
-	auto out = std::ofstream{"outputfilename.txt"};
-	if (out) out << x << ' ' << y;
-	// in.close();  // done automatically
-	// out.close();
+    auto out = std::ofstream{"outputfilename.txt"};
+    if (out) out << x << ' ' << y;
+    // in.close();  // done automatically
+    // out.close();
 }
 ```
 Files for input and output get automatically closed when reaching end of the defining block.
@@ -104,27 +104,27 @@ replace `print()` and `read()` functions:
 ```cpp
 struct Person
 {
-	std::string name;
-	int born;
-	int died;
+    std::string name;
+    int born;
+    int died;
 
-	friend
-	auto& operator<<(std::ostream& os, const Person& p)
-	{
-		return os << p.name << '\t' << p.born << '-' << p.died; 
-	}
+    friend
+    auto& operator<<(std::ostream& os, const Person& p)
+    {
+        return os << p.name << '\t' << p.born << '-' << p.died; 
+    }
 
-	friend
-	auto& operator>>(std::istream& is, Person& p)
-	{
-		Person tmp;
-		char dummy;
-		if (is >> tmp.name >> tmp.born >> dummy >> tmp.died)
-		{
-			p = tmp; // change only when all data read succesfully
-		}	
-		return is;
-	}
+    friend
+    auto& operator>>(std::istream& is, Person& p)
+    {
+        Person tmp;
+        char dummy;
+        if (is >> tmp.name >> tmp.born >> dummy >> tmp.died)
+        {
+            p = tmp; // change only when all data read succesfully
+        }    
+        return is;
+    }
 };
 ```
 Recommended style (

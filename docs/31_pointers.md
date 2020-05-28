@@ -226,9 +226,9 @@ It may be more obvious in this code snippet:
 ```cpp
 int p = nullptr;
 {
-	int i = 42;    
-	p = &i;
-}	// i is gone!
+    int i = 42;    
+    p = &i;
+}    // i is gone!
 *p = 666;
 ```
 

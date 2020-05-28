@@ -46,25 +46,25 @@ is also not "a program" but more of a test for compiler or IDE:
 #include <iostream>
 int main()
 {
-  std::cout << "Hello, world!\n";
+    std::cout << "Hello, world!\n";
 }
 ```
 try it on https://wandbox.org online compiler: edit/compile/run cycle
 
 ## Toolbox
 * editor
-	* Code::Blocks
-	* MS Visual Studio Code
-	* Notepad++ (Windows)
-	* Vim, Emacs, ...
+    * Code::Blocks
+    * MS Visual Studio Code
+    * Notepad++ (Windows)
+    * Vim, Emacs, ...
 * compiler
-	* GCC (Linux, Windows)
-	* Clang (iOS, Linux)
-	* MS Visual C++ (Windows)
+    * GCC (Linux, Windows)
+    * Clang (iOS, Linux)
+    * MS Visual C++ (Windows)
 * build tool
-	* CMake, ...
+    * CMake, ...
 * version control
-	* Git, Mercurial, ...
+    * Git, Mercurial, ...
 * debugger, package manager, ...
 
 ... or a huge IDE (MS Visual Studio, Windows)?

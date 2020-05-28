@@ -9,14 +9,14 @@
 ## Selection -- decide what to do
 
 ```cpp
-	if (isLeapYear(year))
-	{
-		std::cout << year << " is a leapyear\n";
-	}
-	else
-	{
-		std::cout << year << " is not a leapyear\n";
-	}
+    if (isLeapYear(year))
+    {
+        std::cout << year << " is a leapyear\n";
+    }
+    else
+    {
+        std::cout << year << " is not a leapyear\n";
+    }
 ```
 The `else`branch is optional.
 If more than two *alternatives* are needed, nest if-statements or write a `if (...) ... else if ...`-ladder.
@@ -26,32 +26,32 @@ The body of a *loop* is executed when the *condition* at the start of the loop i
 After that the loop condition is evaluated again. 
 When the condition fails, program execution continues after the end of the iteration statement.
 ```cpp
-	auto year = 2017;
-	while (!isLeapYear(year))
-	{
-		std::cout << year << " is not a leapyear\n";
-		++year;
-	}
-	std::cout << year << " is not a leapyear\n";
+    auto year = 2017;
+    while (!isLeapYear(year))
+    {
+        std::cout << year << " is not a leapyear\n";
+        ++year;
+    }
+    std::cout << year << " is not a leapyear\n";
 ```
 A `do { ... } while (condition);` decides after executing the loop body whether to repeat the loop body again.
 
 Loop-*init* statement, loop-*condition*, and loop-*increment* can be bundled like this:
 ```cpp
-	for (auto year = 2017; year < 2030; ++year)
-	{
-		std::cout << year << "\n";
-	}
+    for (auto year = 2017; year < 2030; ++year)
+    {
+        std::cout << year << "\n";
+    }
 ```
 but variables defined inside the for-init statement  like `year` are gone after leaving the loop.
 `for(;;) ...` means `while(true) ...`, i.e. *forever*.
 
 Iterate for each value in a sequence or *range* (called *range-for loop*):
 ```cpp
-	for (auto year : {2017, 2018, 2019, 2020, 2100})
-	{
-		std::cout << year << "\n";
-	}
+    for (auto year : {2017, 2018, 2019, 2020, 2100})
+    {
+        std::cout << year << "\n";
+    }
 ```
 
 ## Function -- same procedure as last year
@@ -63,7 +63,7 @@ Iterate for each value in a sequence or *range* (called *range-for loop*):
 ```cpp
 auto isLeapYear(int year)
 {
-	return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+    return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
 }
 ```
 
@@ -72,7 +72,7 @@ A function returning no result (a *procedure*) is of type `void`:
 ```cpp
 void print(int year)
 {
-	std::cout << year << "\n";
+    std::cout << year << "\n";
 }
 ```
 Side effects can change the behaviour / result of a function:

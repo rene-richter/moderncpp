@@ -29,7 +29,7 @@ result_type operator op (Foo foo, params) {...}
 
 Example (not production level code):
 
- ```cpp
+```cpp
 struct Rational
 {
     Integer d = 0, n = 1; // assuming a BigInt type
@@ -63,7 +63,7 @@ bool operator < (Rational a, Rational b)
 {
     return a.d * b.n < a.n * b.d;
 }
- ```
+```
 
 ## Function objects
 

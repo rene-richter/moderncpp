@@ -17,11 +17,11 @@ C++ standard library _containers_
 
 There are
 * sequential containers:
-	* array-like containers: `array` `vector` `deque`
-	* list containers: `list` `forward_list`
+    * array-like containers: `array` `vector` `deque`
+    * list containers: `list` `forward_list`
 * associative containers
-	* (ordered) containers: `set` `multiset` `map` `multimap`
-	* unordered (hash) containers: `unordered_set` ...
+    * (ordered) containers: `set` `multiset` `map` `multimap`
+    * unordered (hash) containers: `unordered_set` ...
 
 ```
 array<T,5>           [1|2|3|4|5]
@@ -38,12 +38,12 @@ see also: [Kurzreferenz C++](https://namespace-cpp.de/std/lib/exe/fetch.php/kurz
 
 Q: 
 * Characterize each container type. 
-	* When would you use which container type?
-	* Discuss their pro's and con's.
+    * When would you use which container type?
+    * Discuss their pro's and con's.
 * How expensive is it to
-	* copy
-	* return
-	* pass a container by value with respect to the amount of stored data? 
+    * copy
+    * return
+    * pass a container by value with respect to the amount of stored data? 
 * Prove your findings by measuring (profiling).
 
 ## Array-like containers
@@ -51,17 +51,17 @@ a block of memory with
 random access by index operator `seq[i]`:
 ```cpp
 auto sequence = std::array<int,5>{ 1, 4, 9, 16, 25 };
-	
+    
 for (size_t i = 0; i != sequence.size(); ++i)
 {
-	std::cout << i << " :\t" << sequence[i] << '\n'; 
+    std::cout << i << " :\t" << sequence[i] << '\n'; 
 }
 ```
 
 ## Uniform iterator access
 ```
      iter ++ -->
-     |	 
+     |     
      V
 [1|2|3|4|5]
  ^         ^
@@ -81,16 +81,16 @@ auto last  = end(sequence);
 
 for (auto iter = first; iter != last; ++iter)
 {
-	auto element = *iter;
-	
-	std::cout << element << ' ';
+    auto element = *iter;
+    
+    std::cout << element << ' ';
 }
 ```
 (mostly) equivalent to _range-based for loop_:
 ```cpp
 for (auto element : sequence)
 {
-	std::cout << element << ' ';		
+    std::cout << element << ' ';        
 }
 ```
 Q:

@@ -16,14 +16,14 @@ Write a generalized function, a _template_ for a generic function
 template <typename T>
 T min(T a, T b)
 {
-	return b < a ? b : a;
+    return b < a ? b : a;
 }
 ```
 
 Q:
 Why would
 ```cpp
-	return a < b ? a : b;
+    return a < b ? a : b;
 ```
 be wrong?
 
@@ -54,7 +54,7 @@ a) Provide an `operator<` for type `Rectangle`:
 ```cpp
 bool operator<(Rectangle r1, Rectangle r2)
 {
-	return area(r1) < area(r2);
+    return area(r1) < area(r2);
 }
 ```
 
@@ -63,7 +63,7 @@ b) Specialize `min()` for `Rectangle`
 ```cpp
 Rectangle min(Rectangle r1, Rectangle r2)
 {
-	return area(r2) < area(r1) ? r2 : r1;
+    return area(r2) < area(r1) ? r2 : r1;
 }
 ```
 
@@ -75,7 +75,7 @@ A comparator function has to be a predefined function or a lambda expression tak
 template <typename T, typename BinaryPred>
 T min(T a, T b, BinaryPred compare)
 {
-	return compare(b,a) ? b : a;
+    return compare(b,a) ? b : a;
 }
 
 Rectangle r1, r2;
@@ -98,7 +98,7 @@ Do you understand the following code? What are the results?
 template <typename T, typename BinaryPred, typename UnaryFn>
 T min(T a, T b, BinaryPred compare, UnaryFn proj)
 {
-	return compare(proj(b),proj(a)) ? b : a;
+    return compare(proj(b),proj(a)) ? b : a;
 }
 
 auto m3 = min(r1, r2, std::less<>{}, area);
@@ -118,13 +118,13 @@ Why can't we have both function templates in the same codebase:
 template <typename T, typename UnaryFn>
 T min(T a, T b, UnaryFn proj)
 {
-	return proj(b) < proj(a) ? b : a;
+    return proj(b) < proj(a) ? b : a;
 }
 
 template <typename T, typename BinaryPred>
 T min(T a, T b, BinaryPred compare)
 {
-	return compare(b,a) ? b : a;
+    return compare(b,a) ? b : a;
 }
 ```
 A:

@@ -34,7 +34,7 @@ Default values are not to repeat in the function definition (except when it is a
 ```cpp
 int volume(int x, int y, int z)
 {
-  return x*y*z;
+    return x*y*z;
 }
 ```
 Exercise (experiment with source code):

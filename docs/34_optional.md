@@ -5,14 +5,14 @@ Sometimes a value can, but does not have to exist (cardinality: zero or one). Us
 ```cpp
 struct Person
 {
-	std::string name, firstname;
-	std::optional<std::string> title;
+    std::string name, firstname;
+    std::optional<std::string> title;
 };
 
 auto show(Person p)
 {
-	if (p.title) std::cout << *(p.title) << ' ';
-	std::cout << p.name << ", " << p.firstname;    
+    if (p.title) std::cout << *(p.title) << ' ';
+    std::cout << p.name << ", " << p.firstname;    
 }
 ```
 

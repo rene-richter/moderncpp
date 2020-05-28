@@ -29,12 +29,12 @@ can initialize values requiring complex computations:
 
 ```cpp
 const auto squares =
-	[](int n)
-	{
-		std::vector<int> v;
-		for (int i = 0; i <= n; ++i) v.push_back(square(i)); 
-		return v;
-	}(10);
+    [](int n)
+    {
+        std::vector<int> v;
+        for (int i = 0; i <= n; ++i) v.push_back(square(i)); 
+        return v;
+    }(10);
 ```
 
 Naming the lambda is not necessary. Call it immediately. Just add a function call with parameters following the lambda expression. 
@@ -48,15 +48,15 @@ Lambda definitions are allowed inside functions, locally. Some standard algorith
 ```cpp
 auto lambda_as_callback(std::vector<int> v)
 {
-	auto between = [](int x) { return 10 < x && x < 40; }
-	return std::count_if(begin(v), end(v), between);
+    auto between = [](int x) { return 10 < x && x < 40; }
+    return std::count_if(begin(v), end(v), between);
 }
 
 auto define_callback_in_place(std::vector<int> v)
 {
-	return std::count_if(begin(v), end(v), 
-		[](int x) { return 10 < x && x < 40; }
-	);
+    return std::count_if(begin(v), end(v), 
+        [](int x) { return 10 < x && x < 40; }
+    );
 }
 ```
 
@@ -98,10 +98,10 @@ Beware: Don’t risk dangling references! References should outlive the lambda e
 
 ```cpp
 std::for_each(begin(v), end(v),
-	[count = 0](auto x) mutable
-	{
-		std::cout << count++ << ' ' << x << '\n';		 
-	}
+    [count = 0](auto x) mutable
+    {
+        std::cout << count++ << ' ' << x << '\n';         
+    }
 );
 ```
 
@@ -116,10 +116,10 @@ To some extent C++ standard library algorithm templates are “second order” f
 
 auto max_string_length(std::vector<std::string> const& v)
 {
-	return std::transform_reduce(begin(v), end(v)), 0,
-		[](auto x, auto y) { return std::max(x,y); },
-		[](auto s){ return s.size(); }
-	);
+    return std::transform_reduce(begin(v), end(v)), 0,
+        [](auto x, auto y) { return std::max(x,y); },
+        [](auto s){ return s.size(); }
+    );
 }
 ```
 
@@ -137,13 +137,13 @@ and return values
 
 ```cpp
 auto compose = [](auto f, auto g)
-	{
-		return [](auto x) { return g(f(x)); };
-	};
+    {
+        return [](auto x) { return g(f(x)); };
+    };
 
 auto answer = compose(
-	square,
-	[](auto x) { return x + 17; }		
+    square,
+    [](auto x) { return x + 17; }        
 )(5); // 5*5 + 17 == 42
 ```
 
