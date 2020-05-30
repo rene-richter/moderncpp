@@ -27,5 +27,5 @@ with variations of `signed` | `unsigned` and `short` | `long` | `long long` (at 
 ```cpp
 float f = 3.14f;
 double d = 2.718;
-long double ld = 1.6022e-19 
+long double ld = 1.6022e-19L; 
 ```
