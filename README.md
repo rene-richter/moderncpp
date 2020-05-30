@@ -17,7 +17,7 @@ Notes on Modern C++(17) --- A course for beginners
 	* [Lambda expressions](docs/14_lambdas.md)
 	* [Library algorithms](docs/15_algorithms.md)
 * Types
-	* TODO: Fundamental types
+	* [Fundamental types](docs/21_fundamental_types.md)
 	* [User-defined types](docs/22_userdefined_types.md)
 	* [Stacking animals](docs/23_bremen_musicians.md)
 	* [Data containers](docs/24_containers.md)
