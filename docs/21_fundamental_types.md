@@ -29,3 +29,6 @@ float f = 3.14f;
 double d = 2.718;
 long double ld = 1.6022e-19L; 
 ```
+
+Exercise: Find out about types and value ranges 
+using [example code](../examples/types/fundamental.cpp).
