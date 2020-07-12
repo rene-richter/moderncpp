@@ -12,7 +12,7 @@ template <typename T>
 void show(T x) { std::cout << x << '\n'; }
 ```
 
-C++20 now also allows unconstraint functions with auto parameters:
+C++20 now also allows unconstrained functions with auto parameters:
 
 ```cpp
 void show(auto x) { std::cout << x << '\n'; } 
