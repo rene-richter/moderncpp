@@ -2,7 +2,8 @@
 
 Coroutines contain a keyword `co_yield`, `co_return`or `co_await`.
 
-Functions compute a value and return it. A coroutine can deliver (yield) a value, suspend its work, and resume (continue its work) at the same position, when reactivated:
+Functions compute a value and return it. 
+A coroutine can deliver (yield) a value, suspend its work, and resume (continue its work) at the same position, when reactivated:
 
 ```cpp
 #include <experimental/generator> // MS VC++ /await /std=c++latest
@@ -21,7 +22,7 @@ generator<Triple> pythagorean_triples(int limit)
                 if (x * x + y * y == z * z)
                 {
                     std::cout << '\t' << x << ' ' << y << ' ' << z << '\n';
-                    co_yield{ x,y,z };
+                    co_yield {x, y, z};
                 }
 }
 
@@ -29,7 +30,7 @@ generator<Triple> irreducible_pythagorean_triples(int limit)
 {
     for (auto [x, y, z] : pythagorean_triples(limit))
         if (std::gcd(x, z) == 1 && std::gcd(y, z) == 1)
-            co_yield {x,y,z};
+            co_yield {x, y, z};
 }
 
 int main()
@@ -63,5 +64,9 @@ irreducible
 20 21 29
 ```
 
-Like `std::views::iota(1)` coroutines can act as generators. Unfortunately, generators are not standardized yet. At the moment (July 2020) generators are experimental in Visual C++. They will combine well with [`<ranges>`](41_ranges.md), when implemented. Lewis Baker's library [cppcoro](https://github.com/lewissbaker/cppcoro) also provides this facility.
+Like `std::views::iota(1)`, coroutines can act as generators. 
+Unfortunately, generators are not standardized yet. 
+At the moment (July 2020), generators are experimental in Visual C++. 
+They will combine well with [`<ranges>`](41_ranges.md), when implemented. 
+Lewis Baker's library [cppcoro](https://github.com/lewissbaker/cppcoro) also provides this facility.
 
