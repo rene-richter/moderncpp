@@ -35,7 +35,7 @@ Notes on Modern C++(17) --- A course for beginners
 * A Preview to C++20
   * [Ranges](docs/41_ranges.md)
   * [Concepts](docs/42_concepts.md)
-  * [Modules](docs/43_modules)
+  * [Modules](docs/43_modules.md)
   * [Coroutines](docs/44_coroutines.md)
 
 To be continued...
