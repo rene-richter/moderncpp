@@ -32,6 +32,10 @@ Notes on Modern C++(17) --- A course for beginners
 	* [Optional values](docs/34_optional.md)
 	* [Overloading operators](docs/35_overloading_operators.md)
 * TODO: Libraries
-* TODO: C++20
+* A Preview to C++20
+  * [Ranges](docs/41_ranges.md)
+  * [Concepts](docs/42_concepts.md)
+  * [Modules](docs/43_modules)
+  * TODO: Coroutines
 
 To be continued...
