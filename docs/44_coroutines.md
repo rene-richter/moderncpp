@@ -63,5 +63,5 @@ irreducible
 20 21 29
 ```
 
-Like `std::views::iota(1)` coroutines can act as generators. Unfortunately, generators are not standardized yet. At the moment (July 2020) generators are experimental in Visual C++. They will combine well with [<ranges>](41_ranges.md), when implemented. Lewis Baker's library [cppcoro](https://github.com/lewissbaker/cppcoro) also provides this facility.
+Like `std::views::iota(1)` coroutines can act as generators. Unfortunately, generators are not standardized yet. At the moment (July 2020) generators are experimental in Visual C++. They will combine well with [`<ranges>`](41_ranges.md), when implemented. Lewis Baker's library [cppcoro](https://github.com/lewissbaker/cppcoro) also provides this facility.
 
